@@ -9,7 +9,6 @@ import com.aat.stock.management.receptionnaire.Receptionnaire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,26 +41,17 @@ public class IntervenantServiceImplementation implements IntervenantServiceInter
 
     @Override
     public List<IntervenantDto> intervenantList(){
-        for(Intervenant intervenant: intervenantRepository.findAll()){
-            System.out.println(intervenant.getNom()+" "+intervenant.getEmail());
-        }
         return intervenantRepository.findAll().stream()
                 .map(intervenant -> {
                     if(intervenant instanceof Fournisseur) {
                         Fournisseur fournisseur = (Fournisseur) intervenant;
-                        System.out.println(fournisseur.getTelephone());
-                        System.out.println(intervenantMapper.fournisseurModelToDto(fournisseur).getTelephone());
                         return intervenantMapper.fournisseurModelToDto(fournisseur);
                     }
                     else {
                         Receptionnaire receptionnaire = (Receptionnaire) intervenant;
-                        System.out.println(receptionnaire.getTelephone());
-                        System.out.println(receptionnaire.getPrenom());
                         return intervenantMapper.receptionnaireModelToDto(receptionnaire);
                     }
                 })
                 .collect(Collectors.toList());
     }
-
-
 }

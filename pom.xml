@@ -83,12 +83,6 @@
                             <version>1.5.3.Final</version>
                         </path>
                         <!-- other annotation processors -->
-                        <!-- This is needed when using Lombok 1.18.16 and above -->
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>0.2.0</version>
-                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
@@ -97,13 +91,13 @@
     </build>
     <repositories>
         <repository>
-                                                                <id>spring-milestones</id>
+            <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-                 </repository>
+        </repository>
         <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>

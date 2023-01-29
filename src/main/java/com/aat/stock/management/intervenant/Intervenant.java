@@ -2,7 +2,8 @@ package com.aat.stock.management.intervenant;
 
 
 import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;

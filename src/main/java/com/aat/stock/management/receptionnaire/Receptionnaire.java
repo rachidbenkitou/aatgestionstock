@@ -23,11 +23,5 @@ public class Receptionnaire extends Intervenant {
     private List<MatiereReceptionnaireSortie> matiereReceptionnaireSorties;
      */
 
-    public String getPrenom() {
-        return prenom;
-    }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
 }
