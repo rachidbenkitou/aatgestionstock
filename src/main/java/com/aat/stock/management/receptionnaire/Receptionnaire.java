@@ -13,15 +13,21 @@ import javax.persistence.Entity;
 @DiscriminatorValue("receptionnaire")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class Receptionnaire extends Intervenant {
     private String prenom;
+
+
 
     /*
     @OneToMany(mappedBy = "receptionnaire")
     private List<MatiereReceptionnaireSortie> matiereReceptionnaireSorties;
      */
 
+    public String getPrenom() {
+        return prenom;
+    }
 
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 }

@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 @DiscriminatorValue("fournisseur")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class Fournisseur extends Intervenant {
 
 

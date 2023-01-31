@@ -2,8 +2,11 @@
 package com.aat.stock.management.intervenant;
 
 import com.aat.stock.management.fournisseur.Fournisseur;
+import com.aat.stock.management.fournisseur.FournisseurDto;
 import com.aat.stock.management.receptionnaire.Receptionnaire;
+import com.aat.stock.management.receptionnaire.ReceptionnaireDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.springframework.stereotype.Service;
 
 @Mapper(componentModel = "spring")
@@ -12,13 +15,14 @@ public interface IntervenantMapper {
 
     //Fournisseur fournisseurDtoToModel(FournisseurDto fournisseurDto);
 
-    IntervenantDto fournisseurModelToDto(Fournisseur fournisseur);
+    FournisseurDto fournisseurModelToDto(Fournisseur fournisseur);
 
     //List<FournisseurDto> fournisseurModelToDtos(List<Fournisseur> fournisseurs);
 
     //Receptionnaire receptionnaireDtoToModel(ReceptionnaireDto receptionnaireDto);
 
-    IntervenantDto receptionnaireModelToDto(Receptionnaire receptionnaire);
+
+    ReceptionnaireDto receptionnaireModelToDto(Receptionnaire receptionnaire);
 
     //List<ReceptionnaireDto> receptionnaireModelToDtos(List<Receptionnaire> receptionnaires);
 

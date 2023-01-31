@@ -12,18 +12,16 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class IntervenantDto {
     private String type;
 
-    private String prenom;
+   /* private String prenom;
     private String nom;
     private String telephone;
     private String email;
     @JsonIgnore
     List<MatiereIntervenantTransaction> matiereIntervenantTransactions;
-
+*/
     public String getType() {
         return type;
     }
@@ -32,7 +30,7 @@ public class IntervenantDto {
         this.type = type;
     }
 
-    public String getNom() {
+  /*  public String getNom() {
         return nom;
     }
 
@@ -71,5 +69,7 @@ public class IntervenantDto {
     public void setMatiereIntervenantTransactions(List<MatiereIntervenantTransaction> matiereIntervenantTransactions) {
         this.matiereIntervenantTransactions = matiereIntervenantTransactions;
     }
+    */
+
 }
 
