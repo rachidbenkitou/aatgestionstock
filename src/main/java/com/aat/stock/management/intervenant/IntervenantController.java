@@ -40,9 +40,9 @@ public class IntervenantController {
         return new ResponseEntity<>(intervenantServiceInterface.fournisseurSave(fournisseurDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/fournisseur/update")
-    public ResponseEntity<FournisseurDto> fournisseurUpdate(@RequestBody FournisseurDto fournisseurDto){
-
+    @PutMapping("/fournisseur/update/{id}")
+    public ResponseEntity<FournisseurDto> fournisseurUpdate(@PathVariable(name = "id") Long id,@RequestBody FournisseurDto fournisseurDto){
+        fournisseurDto.setId(id);
         return new ResponseEntity<>(intervenantServiceInterface.fournisseurUpdate(fournisseurDto), HttpStatus.OK);
     }
 
