@@ -14,6 +14,8 @@ public class ReceptionnaireDto extends IntervenantDto {
     private String telephone;
     private String email;
 
+    private String cne;
+
 /*
     @JsonIgnore
     private List<MatiereReceptionnaireSortie> matiereReceptionnaireSorties;
@@ -49,6 +51,14 @@ public class ReceptionnaireDto extends IntervenantDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCne() {
+        return cne;
+    }
+
+    public void setCne(String cne) {
+        this.cne = cne;
     }
 
 }

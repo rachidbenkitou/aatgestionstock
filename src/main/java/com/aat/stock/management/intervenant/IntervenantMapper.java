@@ -9,21 +9,23 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 @Service
 public interface IntervenantMapper {
 
-    //Fournisseur fournisseurDtoToModel(FournisseurDto fournisseurDto);
+    Fournisseur fournisseurDtoToModel(FournisseurDto fournisseurDto);
 
     FournisseurDto fournisseurModelToDto(Fournisseur fournisseur);
 
-    //List<FournisseurDto> fournisseurModelToDtos(List<Fournisseur> fournisseurs);
+    List<FournisseurDto> fournisseurModelToDtos(List<Fournisseur> fournisseurs);
 
-    //Receptionnaire receptionnaireDtoToModel(ReceptionnaireDto receptionnaireDto);
+    Receptionnaire receptionnaireDtoToModel(ReceptionnaireDto receptionnaireDto);
 
 
     ReceptionnaireDto receptionnaireModelToDto(Receptionnaire receptionnaire);
 
-    //List<ReceptionnaireDto> receptionnaireModelToDtos(List<Receptionnaire> receptionnaires);
+    List<ReceptionnaireDto> receptionnaireModelToDtos(List<Receptionnaire> receptionnaires);
 
 }

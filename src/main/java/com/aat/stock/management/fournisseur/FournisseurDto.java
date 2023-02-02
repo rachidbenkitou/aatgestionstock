@@ -12,6 +12,8 @@ public class FournisseurDto extends IntervenantDto {
     private String telephone;
     private String email;
 
+    private String ice;
+
     public String getNom() {
         return nom;
     }
@@ -34,5 +36,13 @@ public class FournisseurDto extends IntervenantDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getIce() {
+        return ice;
+    }
+
+    public void setIce(String ice) {
+        this.ice = ice;
     }
 }

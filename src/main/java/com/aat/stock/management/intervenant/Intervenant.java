@@ -18,8 +18,7 @@ public abstract class Intervenant {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-
-    private String prenom;
+    //private String prenom;
     private String telephone;
     private String email;
     @OneToMany(mappedBy = "intervenant")
@@ -57,6 +56,7 @@ public abstract class Intervenant {
         this.email = email;
     }
 
+    /*
     public String getPrenom() {
         return prenom;
     }
@@ -64,6 +64,8 @@ public abstract class Intervenant {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+     */
 
     public List<MatiereIntervenantTransaction> getMatiereIntervenantTransactions() {
         return matiereIntervenantTransactions;

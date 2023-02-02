@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 public class Receptionnaire extends Intervenant {
     private String prenom;
 
+    private String cne;
 
 
     /*
@@ -29,5 +30,13 @@ public class Receptionnaire extends Intervenant {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public String getCne() {
+        return cne;
+    }
+
+    public void setCne(String cne) {
+        this.cne = cne;
     }
 }

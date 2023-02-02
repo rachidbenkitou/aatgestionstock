@@ -14,7 +14,13 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Fournisseur extends Intervenant {
+    private String ice;
 
+    public String getIce() {
+        return ice;
+    }
 
-
+    public void setIce(String ice) {
+        this.ice = ice;
+    }
 }
