@@ -79,7 +79,10 @@ public class IntervenantServiceImplementation implements IntervenantServiceInter
     @Override
     public FournisseurDto fournisseurUpdate(FournisseurDto fournisseurDto) {
         Fournisseur fournisseur= intervenantMapper.fournisseurDtoToModel(fournisseurDto);
-        return intervenantMapper.fournisseurModelToDto(intervenantRepository.save(fournisseur));
+        Fournisseur savedFournosseur = intervenantRepository.save(fournisseur);
+        FournisseurDto fournisseurDto1 = intervenantMapper.fournisseurModelToDto(savedFournosseur);
+        fournisseurDto1.setType(savedFournosseur.getClass().getSimpleName());
+        return fournisseurDto1;
     }
 
     @Override
@@ -91,7 +94,10 @@ public class IntervenantServiceImplementation implements IntervenantServiceInter
     @Override
     public ReceptionnaireDto receptionnaireUpdate(ReceptionnaireDto receptionnaireDto) {
         Receptionnaire receptionnaire= intervenantMapper.receptionnaireDtoToModel(receptionnaireDto);
-        return intervenantMapper.receptionnaireModelToDto(intervenantRepository.save(receptionnaire));
+        Receptionnaire savedReceptionnaire = intervenantRepository.save(receptionnaire);
+        ReceptionnaireDto receptionnaireDto1=intervenantMapper.receptionnaireModelToDto(savedReceptionnaire);
+        receptionnaireDto1.setType(savedReceptionnaire.getClass().getSimpleName());
+        return receptionnaireDto1;
     }
 
     public void isIdIntervenantExists(Long id){
