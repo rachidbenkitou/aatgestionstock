@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MatierePremiereServiceImplementation implements MatierePremiereServiceInterface{
@@ -19,6 +20,15 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
     private MatierePremiereRepository matierePremiereRepository;
     @Autowired
     private MatierePremiereMapper matierePremiereMapper;
+
+    /*Le role de Cette Variale est de faire la difference entre le code qui est le primary key,
+    car l'utilisateur va entrer pour chaque matiere un prefix specifique determiné qui est
+    detérminé par l'utilisateur, donc peut etre plusieur matiere ont le memes prefix, donc pour faire
+    la diffrence on va ajouté la valeur de i pour chaque prefix entré , cette i va etre
+    incrementé a chaque fois on a appelé a le methode MatierePremieresave()
+     */
+
+    private int i=0;
     @Override
     public List<MatierePremiereDto> MatierePremierefindAll() throws MatierePremiereNotFoundException{
         Optional<List<MatierePremiere>> matierePremieres = Optional.ofNullable(matierePremiereRepository.findAll());
@@ -41,7 +51,8 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
             throw new MatierePremiereAlreadyExistsException("Cette matière première avec cette desination existe déja dans la base de données.");
         else {
             MatierePremiere matierePremiere= matierePremiereMapper.dtoToModel(matierePremiereDto);
-            //matierePremiere.setCode(UUID.randomUUID().toString().substring(0, 10));
+            matierePremiere.setCode(matierePremiere.getCode()+i);
+            i++;
             return matierePremiereMapper.modelToDto(matierePremiereRepository.save(matierePremiere));
         }
     }
