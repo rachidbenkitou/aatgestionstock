@@ -13,8 +13,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class MatiereIntervenantTransaction {
@@ -51,5 +50,83 @@ public class MatiereIntervenantTransaction {
 
     private boolean isUrgence;
 
+    public MatiereIntervenantTransactionId getMatiereIntervenantTransactionId() {
+        return matiereIntervenantTransactionId;
+    }
 
+    public void setMatiereIntervenantTransactionId(MatiereIntervenantTransactionId matiereIntervenantTransactionId) {
+        this.matiereIntervenantTransactionId = matiereIntervenantTransactionId;
+    }
+
+    public MatierePremiere getMatierePremiere() {
+        return matierePremiere;
+    }
+
+    public void setMatierePremiere(MatierePremiere matierePremiere) {
+        this.matierePremiere = matierePremiere;
+    }
+
+    public Intervenant getIntervenant() {
+        return intervenant;
+    }
+
+    public void setIntervenant(Intervenant intervenant) {
+        this.intervenant = intervenant;
+    }
+
+    public Date getDateTransaction() {
+        return dateTransaction;
+    }
+
+    public void setDateTransaction(Date dateTransaction) {
+        this.dateTransaction = dateTransaction;
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    public String getLieuAffectation() {
+        return lieuAffectation;
+    }
+
+    public void setLieuAffectation(String lieuAffectation) {
+        this.lieuAffectation = lieuAffectation;
+    }
+
+    public short getQuantiteLivre() {
+        return quantiteLivre;
+    }
+
+    public void setQuantiteLivre(short quantiteLivre) {
+        this.quantiteLivre = quantiteLivre;
+    }
+
+    public float getPuHt() {
+        return puHt;
+    }
+
+    public void setPuHt(float puHt) {
+        this.puHt = puHt;
+    }
+
+    public boolean isConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        isConfirmed = confirmed;
+    }
+
+    public boolean isUrgence() {
+        return isUrgence;
+    }
+
+    public void setUrgence(boolean urgence) {
+        isUrgence = urgence;
+    }
 }
