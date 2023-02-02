@@ -46,10 +46,10 @@ public class IntervenantController {
         return new ResponseEntity<>(intervenantServiceInterface.fournisseurUpdate(fournisseurDto), HttpStatus.OK);
     }
 
-    @PutMapping("/receptionnaire/update")
-    public ResponseEntity<ReceptionnaireDto> receptionnaireSave(@RequestBody ReceptionnaireDto receptionnaireDto){
-
-        return new ResponseEntity<>(intervenantServiceInterface.receptionnaireSave(receptionnaireDto), HttpStatus.OK);
+    @PutMapping("/receptionnaire/update/{id}")
+    public ResponseEntity<ReceptionnaireDto> receptionnaireSave(@PathVariable(name = "id") Long id,@RequestBody ReceptionnaireDto receptionnaireDto){
+        receptionnaireDto.setId(id);
+        return new ResponseEntity<>(intervenantServiceInterface.receptionnaireUpdate(receptionnaireDto), HttpStatus.OK);
     }
 
 
