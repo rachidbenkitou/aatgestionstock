@@ -2,6 +2,7 @@ package com.aat.stock.management.matiereIntervenanttransaction;
 
 import com.aat.stock.management.intervenant.Intervenant;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,9 +11,25 @@ import lombok.Setter;
 import java.util.Date;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MatiereIntervenantTransactionDTO {
+    public MatiereIntervenantTransactionDTO(MatierePremiere matierePremiere, Intervenant intervenant, Date dateTransaction, Date lastModified, String lieuAffectation, short quantiteLivre, float puHt, boolean isConfirmed, boolean isUrgence) {
+        this.matierePremiere = matierePremiere;
+        this.intervenant = intervenant;
+        this.dateTransaction = dateTransaction;
+        this.lastModified = lastModified;
+        this.lieuAffectation = lieuAffectation;
+        this.quantiteLivre = quantiteLivre;
+        this.puHt = puHt;
+        this.isConfirmed = isConfirmed;
+        this.isUrgence = isUrgence;
+    }
+
+    public MatiereIntervenantTransactionDTO() {
+
+    }
+
+
     MatierePremiere matierePremiere;
     Intervenant intervenant;
     private Date dateTransaction;

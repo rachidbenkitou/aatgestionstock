@@ -9,13 +9,20 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Embeddable
 public class MatiereIntervenantTransactionId implements Serializable {
 
     private Long intervenantId;
     private String matiereId;
+
+    public MatiereIntervenantTransactionId(Long intervenantId, String matiereId) {
+        this.intervenantId = intervenantId;
+        this.matiereId = matiereId;
+    }
+
+    public MatiereIntervenantTransactionId() {
+    }
 
     public Long getIntervenantId() {
         return intervenantId;

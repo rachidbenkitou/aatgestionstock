@@ -6,6 +6,7 @@ import com.aat.stock.management.intervenant.Intervenant;
 import com.aat.stock.management.intervenant.IntervenantDto;
 import com.aat.stock.management.intervenant.IntervenantMapper;
 import com.aat.stock.management.intervenant.IntervenantRepository;
+import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
 import com.aat.stock.management.matierePremiere.exceptions.CodeMatierePremiereNotProvided;
 import com.aat.stock.management.matierePremiere.exceptions.MatierePremiereAlreadyExistsException;

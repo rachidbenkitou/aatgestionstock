@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface MatiereIntervenantTransactionServiceIntr {
 
+    MatiereIntervenantTransactionDTO saveMatiereIntervenantTransactionDTO(MatiereIntervenantTransactionDTO matiereIntervenantTransactionDTO);
 
-    List<MatiereIntervenantTransactionDTO> findAllTransaction();
+    List<MatiereIntervenantTransactionDTO> listMatiereIntervenantTransactionDTO();
 
-    MatiereIntervenantTransactionDTO matiereSortie(MatiereIntervenantTransactionDTO matiereIntervenantTransactionDTO);
+    List<MatiereIntervenantTransactionDTO> getAllIntervenantArticles();
 }

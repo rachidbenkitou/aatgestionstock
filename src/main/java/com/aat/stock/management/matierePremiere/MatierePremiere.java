@@ -1,6 +1,7 @@
 package com.aat.stock.management.matierePremiere;
 
 import com.aat.stock.management.filiere.Filiere;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class MatierePremiere {
     @Id
     private String code;

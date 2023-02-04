@@ -1,7 +1,9 @@
 package com.aat.stock.management.matiereIntervenanttransaction;
 
 import com.aat.stock.management.intervenant.Intervenant;
+import com.aat.stock.management.intervenant.IntervenantDto;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
+import com.aat.stock.management.matierePremiere.MatierePremiereDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,14 +15,27 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-
-@AllArgsConstructor
-@NoArgsConstructor
 public class MatiereIntervenantTransaction {
+
+    public MatiereIntervenantTransaction(MatiereIntervenantTransactionId matiereIntervenantTransactionId, MatierePremiere matierePremiere, Intervenant intervenant, Date dateTransaction, Date lastModified, String lieuAffectation, short quantiteLivre, float puHt, boolean isConfirmed, boolean isUrgence) {
+        this.matiereIntervenantTransactionId = matiereIntervenantTransactionId;
+        this.matierePremiere = matierePremiere;
+        this.intervenant = intervenant;
+        this.dateTransaction = dateTransaction;
+        this.lastModified = lastModified;
+        this.lieuAffectation = lieuAffectation;
+        this.quantiteLivre = quantiteLivre;
+        this.puHt = puHt;
+        this.isConfirmed = isConfirmed;
+        this.isUrgence = isUrgence;
+    }
+
+    public MatiereIntervenantTransaction() {
+    }
 
     @EmbeddedId
     private MatiereIntervenantTransactionId matiereIntervenantTransactionId;
-
+/*
     @ManyToOne(fetch= FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @MapsId("matiereId")
     @JoinColumn(name = "id_matiere_premiere")
@@ -32,6 +47,18 @@ public class MatiereIntervenantTransaction {
     @JoinColumn(name = "id_intervenant")
     Intervenant intervenant;
 
+ */
+
+    @ManyToOne(fetch= FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @MapsId("matiereId")
+    @JoinColumn(name = "id_matiere_premiere")
+    MatierePremiere matierePremiere;
+
+
+    @ManyToOne(fetch=FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @MapsId("intervenantId")
+    @JoinColumn(name = "id_intervenant")
+    Intervenant intervenant;
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date dateTransaction;

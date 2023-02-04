@@ -46,7 +46,8 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
 
     @Override
     public MatierePremiereDto MatierePremieresave(MatierePremiereDto matierePremiereDto) {
-        Optional<MatierePremiere> existingMatierePremiere = Optional.ofNullable(matierePremiereRepository.findMatierePremiereByDesignation(matierePremiereDto.getDesignation()));
+        Optional<MatierePremiere> existingMatierePremiere = Optional.ofNullable(matierePremiereRepository
+                .findMatierePremiereByDesignation(matierePremiereDto.getDesignation()));
         if(existingMatierePremiere.isPresent())
             throw new MatierePremiereAlreadyExistsException("Cette matière première avec cette desination existe déja dans la base de données.");
         else {

@@ -2,6 +2,7 @@ package com.aat.stock.management.intervenant;
 
 
 import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
