@@ -3,6 +3,7 @@ package com.aat.stock.management.intervenant;
 
 import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -12,9 +13,20 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", length = 14)
-@AllArgsConstructor
-@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class Intervenant {
+
+    public Intervenant(Long id, String nom, String telephone, String email, List<MatiereIntervenantTransaction> matiereIntervenantTransactions) {
+        this.id = id;
+        this.nom = nom;
+        this.telephone = telephone;
+        this.email = email;
+        this.matiereIntervenantTransactions = matiereIntervenantTransactions;
+    }
+
+    public Intervenant() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,6 +34,8 @@ public abstract class Intervenant {
     //private String prenom;
     private String telephone;
     private String email;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "intervenant")
     List<MatiereIntervenantTransaction> matiereIntervenantTransactions;
 

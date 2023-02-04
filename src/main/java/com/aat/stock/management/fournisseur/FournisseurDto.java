@@ -11,7 +11,6 @@ public class FournisseurDto extends IntervenantDto {
     private String nom;
     private String telephone;
     private String email;
-
     private String ice;
 
     public String getNom() {
