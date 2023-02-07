@@ -1,0 +1,17 @@
+package com.aat.stock.management.filiere.exceptions;
+
+import com.aat.stock.management.shared.ApiBasedException;
+import org.springframework.http.HttpStatus;
+
+public class FiliereAlreadyExistsException extends ApiBasedException{
+
+
+    public FiliereAlreadyExistsException(String message) {
+        super(message);
+    }
+
+    @Override
+    public HttpStatus getStatusCode() {
+        return HttpStatus.CONFLICT;
+    }
+}
