@@ -2,9 +2,7 @@ package com.aat.stock.management.receptionnaire;
 
 import com.aat.stock.management.intervenant.IntervenantDto;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,7 +11,6 @@ public class ReceptionnaireDto extends IntervenantDto {
     private String nom;
     private String telephone;
     private String email;
-
     private String cne;
 
 /*

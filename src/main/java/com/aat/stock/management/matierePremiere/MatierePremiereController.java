@@ -23,14 +23,19 @@ public class MatierePremiereController {
         return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremierefindById(code), HttpStatus.OK);
     }
 
+    @GetMapping(value = {"/find/{designation}","/find"})
+    public ResponseEntity<MatierePremiereDto> MatierePremiereFindByDesignation(@PathVariable(required = false) String designation){
+        return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremierefindByDesignation(designation), HttpStatus.OK);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<MatierePremiereDto> MatierePremiereSave(@RequestBody MatierePremiereDto matierePremiereDto){
         return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremieresave(matierePremiereDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<MatierePremiereDto> MatierePremiereUpdate(@RequestBody MatierePremiereDto matierePremiereDto) {
-
+    @PutMapping("/update/{designation}")
+    public ResponseEntity<MatierePremiereDto> MatierePremiereUpdate(@PathVariable String designation,@RequestBody MatierePremiereDto matierePremiereDto) {
+        matierePremiereDto.setDesignation(designation);
         return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremiereupdate(matierePremiereDto),HttpStatus.OK);
     }
 

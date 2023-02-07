@@ -21,13 +21,12 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
     @Autowired
     private MatierePremiereMapper matierePremiereMapper;
 
-    /*Le role de Cette Variale est de faire la difference entre le code qui est le primary key,
+    /*Le role de  Variale i est de faire la difference entre le code qui est le primary key,
     car l'utilisateur va entrer pour chaque matiere un prefix specifique determiné qui est
     detérminé par l'utilisateur, donc peut etre plusieur matiere ont le memes prefix, donc pour faire
     la diffrence on va ajouté la valeur de i pour chaque prefix entré , cette i va etre
     incrementé a chaque fois on a appelé a le methode MatierePremieresave()
      */
-
     private int i=0;
     @Override
     public List<MatierePremiereDto> MatierePremierefindAll() throws MatierePremiereNotFoundException{
@@ -43,6 +42,13 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
                 .orElseThrow(() -> new MatierePremiereNotFoundException("Cette matière n'existe pas."));
     }
 
+    @Override
+    public MatierePremiereDto MatierePremierefindByDesignation(String designation) {
+        isCodeMatierePremiereExists(designation);
+        Optional<MatierePremiere> matierePremiere = Optional.ofNullable(matierePremiereRepository.findMatierePremiereByDesignation(designation));
+        return matierePremiere.map(matierePremiereMapper::modelToDto)
+                .orElseThrow(() -> new MatierePremiereNotFoundException("Cette matière n'existe pas."));
+    }
 
     @Override
     public MatierePremiereDto MatierePremieresave(MatierePremiereDto matierePremiereDto) {
@@ -78,7 +84,7 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
     public void isMatierePremiereExists(String code){
         Optional<MatierePremiere> existingMatierePremiere = matierePremiereRepository.findById(code);
         if(!existingMatierePremiere.isPresent()) {
-            throw new MatierePremiereNotFoundException("La matière première avec ce code n'existe pas.");
+            throw new MatierePremiereNotFoundException("La matière première  n'existe pas.");
         }
     }
 

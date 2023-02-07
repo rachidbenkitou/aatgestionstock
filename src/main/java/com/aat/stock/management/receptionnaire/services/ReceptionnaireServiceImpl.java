@@ -1,60 +1,82 @@
-/*
+
 package com.aat.stock.management.receptionnaire.services;
 
 import com.aat.stock.management.receptionnaire.Receptionnaire;
 import com.aat.stock.management.receptionnaire.ReceptionnaireDto;
 import com.aat.stock.management.receptionnaire.ReceptionnaireMapper;
 import com.aat.stock.management.receptionnaire.ReceptionnaireRepository;
+import com.aat.stock.management.receptionnaire.exceptions.CneReceptionnaireNotProvided;
+import com.aat.stock.management.receptionnaire.exceptions.ReceptionnaireAlreadyExistsException;
 import com.aat.stock.management.receptionnaire.exceptions.ReceptionnaireNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@Transactional
 public class ReceptionnaireServiceImpl implements ReceptionnaireServiceIntr{
     @Autowired
-    private ReceptionnaireRepository receptionnaireRepository;
-    private ReceptionnaireMapper receptionnaireMapper;
-
-
+    ReceptionnaireRepository receptionnaireRepository;
+    @Autowired
+    ReceptionnaireMapper receptionnaireMapper;
 
     @Override
     public List<ReceptionnaireDto> findAllReceptionnaires() {
-        return receptionnaireMapper.modelToDtos(receptionnaireRepository.findAll());
-    }
 
+        Optional<List<Receptionnaire>> receptionnaires = Optional.ofNullable(receptionnaireRepository.findAll());
+        return receptionnaires.map(receptionnaireMapper::modelToDtos)
+                .orElseThrow(() -> new ReceptionnaireNotFoundException("Le recéptionnaire n'existe pas."));
+    }
     @Override
-    public ReceptionnaireDto findReceptionnairesById(Short id) throws ReceptionnaireNotFoundException {
-       Receptionnaire receptionnaire = receptionnaireRepository.findById(id)
-                .orElseThrow(()->new ReceptionnaireNotFoundException("Receptionnaire n'est pas existe"));
-        return receptionnaireMapper.modelToDto(receptionnaire);
+    public ReceptionnaireDto findReceptionnairesByCne(String cne) {
+        isCneExists(cne);
+        Optional<Receptionnaire> receptionnaire = Optional.ofNullable(receptionnaireRepository.findByCne(cne));
+        return receptionnaire
+                .map(receptionnaireMapper::modelToDto)
+                .orElseThrow(() -> new ReceptionnaireNotFoundException("Le recéptionnaire n'existe pas."));
     }
 
     @Override
     public ReceptionnaireDto saveReceptionnaires(ReceptionnaireDto receptionnaireDto) {
-
-        Receptionnaire receptionnair = receptionnaireRepository.save(receptionnaireMapper.dtoToModel(receptionnaireDto));
-        return receptionnaireMapper.modelToDto(receptionnair);
+        Optional<Receptionnaire> existingReceptionnaire = Optional.ofNullable(receptionnaireRepository
+                .findByCne(receptionnaireDto.getCne()));
+        if(existingReceptionnaire.isPresent())
+            throw new ReceptionnaireAlreadyExistsException("Ce recéptionnaire existe déja dans la base de données.");
+        else {
+            Receptionnaire receptionnaire= receptionnaireMapper.dtoToModel(receptionnaireDto);
+            return receptionnaireMapper.modelToDto(receptionnaireRepository.save(receptionnaire));
+        }
     }
 
     @Override
     public ReceptionnaireDto updateReceptionnaires(ReceptionnaireDto receptionnaireDto) {
-        return null;
+        isCneExists(receptionnaireDto.getCne());
+        Optional<Receptionnaire> existingReceptionnaire = Optional.ofNullable(receptionnaireRepository.findByCne(receptionnaireDto.getCne()));
+        isReceptionnaireExists(receptionnaireDto.getCne());
+        Receptionnaire receptionnaire= receptionnaireMapper.dtoToModel(receptionnaireDto);
+        return receptionnaireMapper.modelToDto(receptionnaireRepository.save(receptionnaire));
     }
 
     @Override
-    public void deleteReceptionnaires(Short id) {
+    public void deleteReceptionnaires(String cne) {
 
-    }}
+        isCneExists(cne);
+        Optional<Receptionnaire> existingReceptionnaire = Optional.ofNullable(receptionnaireRepository.findByCne(cne));
+        isReceptionnaireExists(cne);
+        receptionnaireRepository.deleteByCne(cne);
+    }
 
- */
-/*=======
-public class ReceptionnaireServiceImpl implements ReceptionnaireServiceIntr{
-    @Autowired
-    private ReceptionnaireRepository receptionnaireRepository;
-    
->>>>>>> 28fae95c3b282ba664468c2dc0db2864ee2882e6
-}*/
+    public void isReceptionnaireExists(String cne){
+        Optional<Receptionnaire> existingReceptionnaire = Optional.ofNullable(receptionnaireRepository.findByCne(cne));
+        if(!existingReceptionnaire.isPresent()) {
+            throw new ReceptionnaireNotFoundException("Le recéptionnaire avec ce cne n'existe pas.");
+        }
+    }
+    public void isCneExists(String cne){
+        if(cne==null) {
+            throw new CneReceptionnaireNotProvided("Vous n'avez pas spécifié le cne.");
+        }
+    }
+}
+

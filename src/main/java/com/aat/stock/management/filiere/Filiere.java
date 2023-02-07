@@ -5,19 +5,18 @@ import com.aat.stock.management.matierePremiere.MatierePremiere;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class Filiere {
+public class Filiere implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Short id;
+    @Column(unique = true)
     private String nom;
-
-    private String filierePrefix;
-
     @ManyToMany
     @JoinTable(
             name="filiere_matiere",
@@ -43,14 +42,6 @@ public class Filiere {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getFilierePrefix() {
-        return filierePrefix;
-    }
-
-    public void setFilierePrefix(String filierePrefix) {
-        this.filierePrefix = filierePrefix;
     }
 
     public List<MatierePremiere> getMatierePremieres() {

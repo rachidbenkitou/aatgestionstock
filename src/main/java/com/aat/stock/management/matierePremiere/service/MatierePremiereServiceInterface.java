@@ -10,6 +10,7 @@ public interface MatierePremiereServiceInterface {
 
     MatierePremiereDto MatierePremierefindById(String code);
 
+    MatierePremiereDto MatierePremierefindByDesignation(String designation);
     MatierePremiereDto MatierePremieresave(MatierePremiereDto matierePremiereDto);
 
     MatierePremiereDto MatierePremiereupdate(MatierePremiereDto matierePremiereDto);

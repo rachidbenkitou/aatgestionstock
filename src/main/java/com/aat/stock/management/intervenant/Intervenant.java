@@ -14,19 +14,9 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", length = 14)
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class Intervenant {
-
-    public Intervenant(Long id, String nom, String telephone, String email, List<MatiereIntervenantTransaction> matiereIntervenantTransactions) {
-        this.id = id;
-        this.nom = nom;
-        this.telephone = telephone;
-        this.email = email;
-        this.matiereIntervenantTransactions = matiereIntervenantTransactions;
-    }
-
-    public Intervenant() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

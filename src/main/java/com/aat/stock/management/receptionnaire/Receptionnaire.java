@@ -1,25 +1,25 @@
 package com.aat.stock.management.receptionnaire;
 
 import com.aat.stock.management.intervenant.Intervenant;
+import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("receptionnaire")
-@NoArgsConstructor
 @AllArgsConstructor
-public class Receptionnaire extends Intervenant {
+@NoArgsConstructor
+public class Receptionnaire extends Intervenant implements Serializable {
     private String prenom;
 
     private String cne;
 
-
-    /*
+/*
     @OneToMany(mappedBy = "receptionnaire")
     private List<MatiereReceptionnaireSortie> matiereReceptionnaireSorties;
      */

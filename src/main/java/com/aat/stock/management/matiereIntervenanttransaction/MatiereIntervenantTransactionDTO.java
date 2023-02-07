@@ -9,14 +9,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Transient;
 import java.util.Date;
 
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MatiereIntervenantTransactionDTO {
     public MatiereIntervenantTransactionDTO(MatierePremiere matierePremiere, Intervenant intervenant, Date dateTransaction, Date lastModified, String lieuAffectation, short quantiteLivre, float puHt, boolean isConfirmed, boolean isUrgence) {
-        this.matierePremiere = matierePremiere;
-        this.intervenant = intervenant;
+        //this.matierePremiere = matierePremiere;
+        //this.intervenant = intervenant;
         this.dateTransaction = dateTransaction;
         this.lastModified = lastModified;
         this.lieuAffectation = lieuAffectation;
@@ -31,21 +32,47 @@ public class MatiereIntervenantTransactionDTO {
     }
 
 
-    MatierePremiere matierePremiere;
-    Intervenant intervenant;
+    //MatierePremiere matierePremiere;
+    //Intervenant intervenant;
     private Date dateTransaction;
     private Date lastModified;
 
     private String lieuAffectation;
 
     private short quantiteLivre;
-
     private float puHt;
-
     private boolean isConfirmed;
-
     private boolean isUrgence;
+    @Transient
+    private String intervenantIce;
+    @Transient
+    private String intervenantCne;
+    private String articleDesignation;
 
+    public String getIntervenantIce() {
+        return intervenantIce;
+    }
+
+    public void setIntervenantIce(String intervenantIce) {
+        this.intervenantIce = intervenantIce;
+    }
+
+    public String getIntervenantCne() {
+        return intervenantCne;
+    }
+
+    public void setIntervenantCne(String intervenantCne) {
+        this.intervenantCne = intervenantCne;
+    }
+
+    public String getArticleDesignation() {
+        return articleDesignation;
+    }
+
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
+    }
+/*
     public MatierePremiere getMatierePremiere() {
         return matierePremiere;
     }
@@ -61,6 +88,8 @@ public class MatiereIntervenantTransactionDTO {
     public void setIntervenant(Intervenant intervenant) {
         this.intervenant = intervenant;
     }
+
+ */
 
     public Date getDateTransaction() {
         return dateTransaction;

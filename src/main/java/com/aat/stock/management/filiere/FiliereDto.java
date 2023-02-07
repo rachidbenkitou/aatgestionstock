@@ -11,11 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FiliereDto {
-
     private String nom;
-
-    private String filierePrefix;
-
     @JsonIgnore
     private List<MatierePremiere> matierePremieres;
 
@@ -25,14 +21,6 @@ public class FiliereDto {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getFilierePrefix() {
-        return filierePrefix;
-    }
-
-    public void setFilierePrefix(String filierePrefix) {
-        this.filierePrefix = filierePrefix;
     }
 
     public List<MatierePremiere> getMatierePremieres() {

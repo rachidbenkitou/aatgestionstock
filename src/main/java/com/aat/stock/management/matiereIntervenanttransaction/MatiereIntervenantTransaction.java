@@ -1,23 +1,20 @@
 package com.aat.stock.management.matiereIntervenanttransaction;
 
 import com.aat.stock.management.intervenant.Intervenant;
-import com.aat.stock.management.intervenant.IntervenantDto;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
-import com.aat.stock.management.matierePremiere.MatierePremiereDto;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class MatiereIntervenantTransaction {
+public class MatiereIntervenantTransaction implements Serializable {
+    @EmbeddedId
+    private MatiereIntervenantTransactionId matiereIntervenantTransactionId;
 
-    public MatiereIntervenantTransaction(MatiereIntervenantTransactionId matiereIntervenantTransactionId, MatierePremiere matierePremiere, Intervenant intervenant, Date dateTransaction, Date lastModified, String lieuAffectation, short quantiteLivre, float puHt, boolean isConfirmed, boolean isUrgence) {
+    public MatiereIntervenantTransaction(MatiereIntervenantTransactionId matiereIntervenantTransactionId, MatierePremiere matierePremiere, Intervenant intervenant, Date dateTransaction, Date lastModified, String lieuAffectation, short quantiteLivre, float puHt, boolean isConfirmed, boolean isUrgence, String intervenantIce, String intervenantCne, String articleDesignation) {
         this.matiereIntervenantTransactionId = matiereIntervenantTransactionId;
         this.matierePremiere = matierePremiere;
         this.intervenant = intervenant;
@@ -28,14 +25,14 @@ public class MatiereIntervenantTransaction {
         this.puHt = puHt;
         this.isConfirmed = isConfirmed;
         this.isUrgence = isUrgence;
+        this.intervenantIce = intervenantIce;
+        this.intervenantCne = intervenantCne;
+        this.articleDesignation = articleDesignation;
     }
 
     public MatiereIntervenantTransaction() {
     }
-
-    @EmbeddedId
-    private MatiereIntervenantTransactionId matiereIntervenantTransactionId;
-/*
+    /*
     @ManyToOne(fetch= FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @MapsId("matiereId")
     @JoinColumn(name = "id_matiere_premiere")
@@ -76,6 +73,14 @@ public class MatiereIntervenantTransaction {
     private boolean isConfirmed;
 
     private boolean isUrgence;
+
+    //This will denote that the attribute need not be persisted in the DB and JPA won't attempt to create a column in the table.
+    @Transient
+    private String intervenantIce;
+    @Transient
+    private String intervenantCne;
+    @Transient
+    private String articleDesignation;
 
     public MatiereIntervenantTransactionId getMatiereIntervenantTransactionId() {
         return matiereIntervenantTransactionId;
@@ -155,5 +160,29 @@ public class MatiereIntervenantTransaction {
 
     public void setUrgence(boolean urgence) {
         isUrgence = urgence;
+    }
+
+    public String getIntervenantIce() {
+        return intervenantIce;
+    }
+
+    public void setIntervenantIce(String intervenantIce) {
+        this.intervenantIce = intervenantIce;
+    }
+
+    public String getIntervenantCne() {
+        return intervenantCne;
+    }
+
+    public void setIntervenantCne(String intervenantCne) {
+        this.intervenantCne = intervenantCne;
+    }
+
+    public String getArticleDesignation() {
+        return articleDesignation;
+    }
+
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class IntervenantDto {
     private Long id;
-    private String type;
+    //private String type;
 
     public Long getId() {
         return id;
@@ -21,7 +21,7 @@ public class IntervenantDto {
     public void setId(Long id) {
         this.id = id;
     }
-
+/*
     public String getType() {
         return type;
     }
@@ -30,6 +30,7 @@ public class IntervenantDto {
         this.type = type;
     }
 
+ */
 
 }
 
