@@ -16,7 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Receptionnaire extends Intervenant implements Serializable {
     private String prenom;
-
     private String cne;
 
 /*
