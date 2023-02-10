@@ -8,8 +8,7 @@ import java.util.List;
 public interface FiliereServiceIntr {
     List<FiliereDto> findAllFiliers();
 
-
-    FiliereDto findFiliereById(String id) throws FiliereNotFoundException;
+    List<FiliereDto> findFiliereByNom(String nom) throws FiliereNotFoundException;
 
     FiliereDto saveFiliere(FiliereDto  filiereDto);
 

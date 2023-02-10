@@ -8,6 +8,6 @@ public interface FournisseurServiceInterface {
     public List<FournisseurDto> listFournisseur();
     FournisseurDto fournisseurSave(FournisseurDto fournisseurDto);
     FournisseurDto updateFournisseur(FournisseurDto fournisseurDto);
-    FournisseurDto findFournisseurByIce(String ice);
+    List<FournisseurDto> findFournisseurByIce(String ice);
     void deleteFournisseur(String ice);
 }

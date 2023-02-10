@@ -27,11 +27,11 @@ public class FournisseurServiceImplementation implements FournisseurServiceInter
                 .orElseThrow(() -> new ReceptionnaireNotFoundException("Le fournisseur n'existe pas."));
     }
     @Override
-    public FournisseurDto findFournisseurByIce(String ice) {
+    public List<FournisseurDto> findFournisseurByIce(String ice) {
         isIceExists(ice);
-        Optional<Fournisseur> fournisseur= Optional.ofNullable(fournisseurRepository.findByIce(ice));
+        Optional<List<Fournisseur>> fournisseur= Optional.ofNullable(fournisseurRepository.findByICE(ice));
         return fournisseur
-                .map(fournisseurMapper::modelToDto)
+                .map(fournisseurMapper::modelToDtos)
                 .orElseThrow(() -> new FournisseurNotFoundException("Le fournisseur n'existe pas."));
     }
     @Override

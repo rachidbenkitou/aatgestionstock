@@ -29,11 +29,11 @@ public class ReceptionnaireServiceImpl implements ReceptionnaireServiceIntr{
                 .orElseThrow(() -> new ReceptionnaireNotFoundException("Le recéptionnaire n'existe pas."));
     }
     @Override
-    public ReceptionnaireDto findReceptionnairesByCne(String cne) {
+    public List<ReceptionnaireDto> findReceptionnairesByCne(String cne) {
         isCneExists(cne);
-        Optional<Receptionnaire> receptionnaire = Optional.ofNullable(receptionnaireRepository.findByCne(cne));
-        return receptionnaire
-                .map(receptionnaireMapper::modelToDto)
+        Optional<List<Receptionnaire>> receptionnaires = Optional.ofNullable(receptionnaireRepository.findByCNE(cne));
+        return receptionnaires
+                .map(receptionnaireMapper::modelToDtos)
                 .orElseThrow(() -> new ReceptionnaireNotFoundException("Le recéptionnaire n'existe pas."));
     }
 

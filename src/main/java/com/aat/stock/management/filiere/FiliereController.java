@@ -16,9 +16,9 @@ public class FiliereController {
     public List<FiliereDto> listFilieres(){
         return  filiereService.findAllFiliers();
     }
-    @GetMapping("/find/{id}")
-    public FiliereDto getFiliere(@PathVariable(name="id") String id){
-        return  filiereService.findFiliereById(id);
+    @GetMapping("/find/{nom}")
+    public List<FiliereDto> getFiliere(@PathVariable(name="nom") String nom){
+        return  filiereService.findFiliereByNom("%"+nom+"%");
     }
     @PostMapping("/save")
     public FiliereDto saveFiliere(@RequestBody FiliereDto filiereDto){

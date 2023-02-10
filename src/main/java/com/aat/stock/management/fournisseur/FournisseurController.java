@@ -20,8 +20,8 @@ public class FournisseurController {
         return new ResponseEntity<>(fournisseurServiceInterface.listFournisseur(), HttpStatus.OK);
     }
     @GetMapping("/find/{ice}")
-    public ResponseEntity<FournisseurDto> findFournisseurByIce(@PathVariable String ice) {
-        return new ResponseEntity<>(fournisseurServiceInterface.findFournisseurByIce(ice), HttpStatus.OK);
+    public ResponseEntity<List<FournisseurDto>> findFournisseurByIce(@PathVariable String ice) {
+        return new ResponseEntity<>(fournisseurServiceInterface.findFournisseurByIce("%"+ice+"%"), HttpStatus.OK);
     }
     @PostMapping("/save")
     public ResponseEntity<FournisseurDto> saveFournisseur(@RequestBody FournisseurDto fournisseurDto){

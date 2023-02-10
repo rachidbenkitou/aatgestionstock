@@ -8,9 +8,10 @@ public interface MatierePremiereServiceInterface {
 
     List<MatierePremiereDto> MatierePremierefindAll();
 
-    MatierePremiereDto MatierePremierefindById(String code);
+    List<MatierePremiereDto>  MatierePremierefindByCode(String code);
 
     MatierePremiereDto MatierePremierefindByDesignation(String designation);
+    List<MatierePremiereDto> MatierePremierefindByDesign(String designation);
     MatierePremiereDto MatierePremieresave(MatierePremiereDto matierePremiereDto);
 
     MatierePremiereDto MatierePremiereupdate(MatierePremiereDto matierePremiereDto);

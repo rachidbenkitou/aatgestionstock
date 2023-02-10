@@ -35,13 +35,20 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
                 .orElseThrow(() -> new MatierePremiereNotFoundException("Aucune matière trouvée."));
     }
     @Override
-    public MatierePremiereDto MatierePremierefindById(String code) {
+    public List<MatierePremiereDto> MatierePremierefindByCode(String code) {
         isCodeMatierePremiereExists(code);
-        return matierePremiereRepository.findById(code)
-                .map(matierePremiereMapper::modelToDto)
+        Optional<List<MatierePremiere>> matierePremieres = Optional.ofNullable(matierePremiereRepository.findMatierePremiereByCode(code));
+        return  matierePremieres.map(matierePremiereMapper::modelToDtos)
                 .orElseThrow(() -> new MatierePremiereNotFoundException("Cette matière n'existe pas."));
     }
 
+    @Override
+    public List<MatierePremiereDto> MatierePremierefindByDesign(String designation) {
+        isCodeMatierePremiereExists(designation);
+        Optional<List<MatierePremiere>> matierePremieres = Optional.ofNullable(matierePremiereRepository.findMatierePremiereByDesign(designation));
+        return matierePremieres.map(matierePremiereMapper::modelToDtos)
+                .orElseThrow(() -> new MatierePremiereNotFoundException("Cette matière n'existe pas."));
+    }
     @Override
     public MatierePremiereDto MatierePremierefindByDesignation(String designation) {
         isCodeMatierePremiereExists(designation);

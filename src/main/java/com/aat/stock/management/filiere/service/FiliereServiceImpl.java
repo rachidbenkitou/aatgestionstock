@@ -7,9 +7,6 @@ import com.aat.stock.management.filiere.FiliereRepository;
 import com.aat.stock.management.filiere.exceptions.FiliereAlreadyExistsException;
 import com.aat.stock.management.filiere.exceptions.FiliereNotFoundException;
 import com.aat.stock.management.filiere.exceptions.NomFiliereNotProvided;
-import com.aat.stock.management.matierePremiere.MatierePremiere;
-import com.aat.stock.management.matierePremiere.exceptions.CodeMatierePremiereNotProvided;
-import com.aat.stock.management.matierePremiere.exceptions.MatierePremiereAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,11 +33,14 @@ public class FiliereServiceImpl implements FiliereServiceIntr {
     }
 
     @Override
-    public FiliereDto findFiliereById(String id) throws FiliereNotFoundException {
-        isNomFiliereExists(id);
-        Filiere filiere=filiereRepository.findById(id)
-                .orElseThrow(()->new FiliereNotFoundException("ce filiere n'est pas existe"));
-        return filiereMapper.modelToDto(filiere);
+    public List<FiliereDto> findFiliereByNom(String nom) throws FiliereNotFoundException {
+        isNomFiliereExists(nom);
+        List <Filiere> filieres=filiereRepository.searchFiliere(nom);
+        if(filieres == null) {
+            throw new FiliereNotFoundException("ce filiere n'est pas existe");
+        }
+
+        return filiereMapper.modelToDtos(filieres);
     }
 
     @Override

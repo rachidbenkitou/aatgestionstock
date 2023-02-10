@@ -19,8 +19,8 @@ public class ReceptionnaireController {
         return new ResponseEntity<>(receptionnaireServiceIntr.findAllReceptionnaires(), HttpStatus.OK);
     }
     @GetMapping("/find/{cne}")
-    public ResponseEntity<ReceptionnaireDto> findReceptionnaireByCne(@PathVariable String cne) {
-        return new ResponseEntity<>(receptionnaireServiceIntr.findReceptionnairesByCne(cne), HttpStatus.OK);
+    public ResponseEntity<List<ReceptionnaireDto>> findReceptionnaireByCne(@PathVariable String cne) {
+        return new ResponseEntity<>(receptionnaireServiceIntr.findReceptionnairesByCne("%"+cne+"%"), HttpStatus.OK);
     }
     @PostMapping("/save")
     public ResponseEntity<ReceptionnaireDto> saveReceptionnaire(@RequestBody ReceptionnaireDto receptionnaireDto){

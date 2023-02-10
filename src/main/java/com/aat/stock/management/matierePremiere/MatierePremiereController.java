@@ -18,14 +18,14 @@ public class MatierePremiereController {
         return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremierefindAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = {"/find/{code}","/find"})
-    public ResponseEntity<MatierePremiereDto> MatierePremiereFindByCode(@PathVariable(required = false) String code){
-        return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremierefindById(code), HttpStatus.OK);
+    @GetMapping(value = {"/find/code/{code}","/find"})
+    public ResponseEntity<List<MatierePremiereDto>> MatierePremiereFindByCode(@PathVariable(required = false) String code){
+        return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremierefindByCode("%"+code+"%"), HttpStatus.OK);
     }
 
-    @GetMapping(value = {"/find/{designation}","/find"})
-    public ResponseEntity<MatierePremiereDto> MatierePremiereFindByDesignation(@PathVariable(required = false) String designation){
-        return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremierefindByDesignation(designation), HttpStatus.OK);
+    @GetMapping(value = {"/find/design/{designation}","/find"})
+    public ResponseEntity<List<MatierePremiereDto>> MatierePremiereFindByDesignation(@PathVariable(required = false) String designation){
+        return new ResponseEntity<>(matierePremiereServiceInterface.MatierePremierefindByDesign("%"+designation+"%"), HttpStatus.OK);
     }
 
     @PostMapping("/save")
