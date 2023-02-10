@@ -15,30 +15,12 @@ import java.util.Date;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MatiereIntervenantTransactionDTO {
-    public MatiereIntervenantTransactionDTO(MatierePremiere matierePremiere, Intervenant intervenant, Date dateTransaction, Date lastModified, String lieuAffectation, short quantiteLivre, float puHt, boolean isConfirmed, boolean isUrgence) {
-        //this.matierePremiere = matierePremiere;
-        //this.intervenant = intervenant;
-        this.dateTransaction = dateTransaction;
-        this.lastModified = lastModified;
-        this.lieuAffectation = lieuAffectation;
-        this.quantiteLivre = quantiteLivre;
-        this.puHt = puHt;
-        this.isConfirmed = isConfirmed;
-        this.isUrgence = isUrgence;
-    }
-
-    public MatiereIntervenantTransactionDTO() {
-
-    }
-
 
     //MatierePremiere matierePremiere;
     //Intervenant intervenant;
     private Date dateTransaction;
     private Date lastModified;
-
     private String lieuAffectation;
-
     private short quantiteLivre;
     private float puHt;
     private boolean isConfirmed;
@@ -47,6 +29,7 @@ public class MatiereIntervenantTransactionDTO {
     private String intervenantIce;
     @Transient
     private String intervenantCne;
+    @Transient
     private String articleDesignation;
 
     public String getIntervenantIce() {

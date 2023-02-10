@@ -4,6 +4,7 @@ import com.aat.stock.management.fournisseur.Fournisseur;
 import com.aat.stock.management.matiereIntervenanttransaction.*;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
 import com.aat.stock.management.matierePremiere.MatierePremiereRepository;
+import com.aat.stock.management.matierePremiere.exceptions.MatierePremiereNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,12 @@ public class MatiereIntervenantTransactionServiceImpl implements MatiereInterven
 
     @Override
     public MatiereIntervenantTransactionDTO saveMatiereIntervenantTransactionDTO(MatiereIntervenantTransactionDTO matiereIntervenantTransactionDTO) {
+        MatierePremiere matierePremiere=matierePremiereRepository.findMatierePremiereByDesignation(matiereIntervenantTransactionDTO.getArticleDesignation());
+        if(matierePremiere==null) throw new MatierePremiereNotFoundException("La matière première n'existe pas.");
+
+
+
+
         /*
         MatierePremiere matierePremiere=matierePremiereRepository.findMatierePremiereByDesignation(matiereIntervenantTransactionDTO.getArticleDesignation());
         Fournisseur fournisseur=intervenantRepository.findByIce(matiereIntervenantTransactionDTO.getIntervenantIce());

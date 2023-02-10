@@ -14,24 +14,6 @@ public class MatiereIntervenantTransaction implements Serializable {
     @EmbeddedId
     private MatiereIntervenantTransactionId matiereIntervenantTransactionId;
 
-    public MatiereIntervenantTransaction(MatiereIntervenantTransactionId matiereIntervenantTransactionId, MatierePremiere matierePremiere, Intervenant intervenant, Date dateTransaction, Date lastModified, String lieuAffectation, short quantiteLivre, float puHt, boolean isConfirmed, boolean isUrgence, String intervenantIce, String intervenantCne, String articleDesignation) {
-        this.matiereIntervenantTransactionId = matiereIntervenantTransactionId;
-        this.matierePremiere = matierePremiere;
-        this.intervenant = intervenant;
-        this.dateTransaction = dateTransaction;
-        this.lastModified = lastModified;
-        this.lieuAffectation = lieuAffectation;
-        this.quantiteLivre = quantiteLivre;
-        this.puHt = puHt;
-        this.isConfirmed = isConfirmed;
-        this.isUrgence = isUrgence;
-        this.intervenantIce = intervenantIce;
-        this.intervenantCne = intervenantCne;
-        this.articleDesignation = articleDesignation;
-    }
-
-    public MatiereIntervenantTransaction() {
-    }
     /*
     @ManyToOne(fetch= FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @MapsId("matiereId")

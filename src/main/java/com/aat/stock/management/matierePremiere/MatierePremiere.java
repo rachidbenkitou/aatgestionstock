@@ -30,7 +30,7 @@ public class MatierePremiere {
     private short totaleSortie;
 
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(
             name="filiere_matiere",
             joinColumns=@JoinColumn(name="matiere_id"),
