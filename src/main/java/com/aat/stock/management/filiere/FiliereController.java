@@ -25,12 +25,12 @@ public class FiliereController {
         return  filiereService.saveFiliere(filiereDto);
     }
     @PutMapping("/update/{id}")
-    public FiliereDto updateFiliere(@PathVariable(name = "id") String id,@RequestBody FiliereDto filiereDto){
-        filiereDto.setNom(id);
+    public FiliereDto updateFiliere(@PathVariable(name = "id") Short id,@RequestBody FiliereDto filiereDto){
+        filiereDto.setId(id);
         return  filiereService.updateFiliere(filiereDto);
     }
     @DeleteMapping("/delete/{id}")
-    public void deleteFiliere(@PathVariable(name = "id") String id){
+    public void deleteFiliere(@PathVariable(name = "id") Short id){
 
          filiereService.deleteFiliere(id);
     }

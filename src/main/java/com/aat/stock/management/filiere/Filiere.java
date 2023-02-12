@@ -18,7 +18,13 @@ public class Filiere implements Serializable {
 
     @Column(unique = true)
     private String nom;
-
+    @ManyToMany
+    @JoinTable(
+            name="filiere_matiere",
+            joinColumns=@JoinColumn(name="filiere_nom"),
+            inverseJoinColumns=@JoinColumn(name="matiere_id")
+    )
+    List<MatierePremiere> matierePremieres;
     public String getNom() {
         return nom;
     }
