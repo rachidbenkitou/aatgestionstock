@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FournisseurDto extends IntervenantDto {
+    private Long id;
     private String nom;
     private String telephone;
     private String email;

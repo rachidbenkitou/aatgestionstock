@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReceptionnaireDto extends IntervenantDto {
+    private Long id;
     private String prenom;
     private String nom;
     private String telephone;

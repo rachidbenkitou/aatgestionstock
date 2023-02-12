@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/fournisseur")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class FournisseurController {
     @Autowired
     private FournisseurServiceInterface fournisseurServiceInterface;
