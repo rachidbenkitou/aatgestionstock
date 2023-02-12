@@ -45,7 +45,7 @@ public class FiliereServiceImpl implements FiliereServiceIntr {
 
     @Override
     public FiliereDto saveFiliere(FiliereDto filiereDto) throws FiliereAlreadyExistsException{
-        isFiliereExiste(filiereDto.getNom());
+        isFiliereExiste(filiereDto.getId());
         Filiere filiere = filiereMapper.dtoToModel(filiereDto);
         Filiere savedFiliere = filiereRepository.save(filiere);
         return filiereMapper.modelToDto(savedFiliere);
@@ -56,7 +56,7 @@ public class FiliereServiceImpl implements FiliereServiceIntr {
     @Override
     public FiliereDto updateFiliere(FiliereDto filiereDto) throws FiliereNotFoundException{
 
-            isFiliereNotExiste(filiereDto.getNom());
+            isFiliereNotExiste(filiereDto.getId());
             Filiere filiere = filiereMapper.dtoToModel(filiereDto);
             Filiere savedFiliere = filiereRepository.save(filiere);
             return filiereMapper.modelToDto(savedFiliere);
@@ -64,19 +64,18 @@ public class FiliereServiceImpl implements FiliereServiceIntr {
     }
 
     @Override
-    public void deleteFiliere(String id) throws FiliereNotFoundException,NomFiliereNotProvided{
-          isNomFiliereExists(id);
-          isFiliereNotExiste(id);
+    public void deleteFiliere(Short id) throws FiliereNotFoundException,NomFiliereNotProvided{
+
           filiereRepository.deleteById(id);
     }
 
-    public void  isFiliereExiste(String id)throws FiliereAlreadyExistsException{
+    public void  isFiliereExiste(Short id)throws FiliereAlreadyExistsException{
         Optional<Filiere> existingFiliere = filiereRepository.findById(id);
         if(existingFiliere.isPresent()) {
             throw new FiliereAlreadyExistsException("le filiere avec ce nom est deja existe ");
         }
     }
-    public void  isFiliereNotExiste(String id)throws FiliereNotFoundException{
+    public void  isFiliereNotExiste(Short id)throws FiliereNotFoundException{
         Optional<Filiere> existingFiliere = filiereRepository.findById(id);
         if(!existingFiliere.isPresent()) {
             throw new FiliereNotFoundException("le filiere avec ce nom n'est pas existe ");

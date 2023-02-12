@@ -15,6 +15,9 @@ public class Filiere implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Short id;
+
+
+
     @Column(unique = true)
     private String nom;
     @ManyToMany
@@ -35,7 +38,13 @@ public class Filiere implements Serializable {
     @OneToMany(mappedBy = "filiere")
     private List<MatierePremiere> matierePremieres;
      */
+    public Short getId() {
+        return id;
+    }
 
+    public void setId(Short id) {
+        this.id = id;
+    }
     public String getNom() {
         return nom;
     }

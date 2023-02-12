@@ -11,9 +11,19 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FiliereDto {
+
+    private Short id ;
     private String nom;
     @JsonIgnore
     private List<MatierePremiere> matierePremieres;
+
+    public Short getId() {
+        return id;
+    }
+
+    public void setId(Short id) {
+        this.id = id;
+    }
 
     public String getNom() {
         return nom;

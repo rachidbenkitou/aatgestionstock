@@ -15,5 +15,5 @@ public interface FiliereServiceIntr {
     FiliereDto  updateFiliere(FiliereDto  filiereDto);
 
 
-    void deleteFiliere(String id);
+    void deleteFiliere(Short id);
 }
