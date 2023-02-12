@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("matiere-premiere")
+@CrossOrigin("*")
 public class MatierePremiereController {
     @Autowired
     private MatierePremiereServiceInterface matierePremiereServiceInterface;

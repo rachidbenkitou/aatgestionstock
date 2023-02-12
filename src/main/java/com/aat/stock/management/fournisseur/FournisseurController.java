@@ -27,10 +27,10 @@ public class FournisseurController {
     public ResponseEntity<FournisseurDto> saveFournisseur(@RequestBody FournisseurDto fournisseurDto){
         return new ResponseEntity<>(fournisseurServiceInterface.fournisseurSave(fournisseurDto), HttpStatus.CREATED);
     }
-    @PostMapping("/update/{ice}")
+    @PutMapping("/update/{ice}")
     public ResponseEntity<FournisseurDto> updateFournisseur(@PathVariable String ice ,@RequestBody FournisseurDto fournisseurDto){
-        fournisseurDto.setIce(ice);
-        return new ResponseEntity<>(fournisseurServiceInterface.fournisseurSave(fournisseurDto), HttpStatus.OK);
+        //fournisseurDto.setIce(ice);
+        return new ResponseEntity<>(fournisseurServiceInterface.updateFournisseur(fournisseurDto), HttpStatus.OK);
     }
     @DeleteMapping("/delete/{ice}")
     public ResponseEntity<?> deleteFournisseur(@PathVariable String ice){

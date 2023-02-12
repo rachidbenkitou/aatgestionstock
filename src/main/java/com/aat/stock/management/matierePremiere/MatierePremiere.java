@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,8 +14,6 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class MatierePremiere {
     @Id
@@ -24,12 +23,8 @@ public class MatierePremiere {
     private short  stockActuel; //short: from -32768 to 32767
     private String unite;
     private short stockInitial;  //short: from -32768 to 32767
-
     private short totaleEntree;
-
     private short totaleSortie;
-
-
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(
             name="filiere_matiere",
@@ -37,23 +32,6 @@ public class MatierePremiere {
             inverseJoinColumns=@JoinColumn(name="filiere_nom")
     )
     private List<Filiere> filieres;
-
-
-    /*
-    @OneToMany(mappedBy = "matierePremiere")
-    private List<MatiereReceptionnaireSortie> matiereReceptionnaireSorties;
-
-    @OneToMany(mappedBy = "matierePremiere")
-    private List<MatiereFournisseurEntree> matiereFournisseurEntrees;
-
-     */
-
-    /*
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "filiere_id")
-    private Filiere filiere;
-     */
-
     public String getCode() {
         return code;
     }

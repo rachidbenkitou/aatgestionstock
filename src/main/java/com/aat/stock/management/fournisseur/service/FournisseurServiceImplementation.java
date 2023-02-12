@@ -48,7 +48,6 @@ public class FournisseurServiceImplementation implements FournisseurServiceInter
     @Override
     public FournisseurDto updateFournisseur(FournisseurDto fournisseurDto) {
         isIceExists(fournisseurDto.getIce());
-        Optional<Fournisseur> existingFournisseur = Optional.ofNullable(fournisseurRepository.findByIce(fournisseurDto.getIce()));
         isFournisseurExists(fournisseurDto.getIce());
         Fournisseur fournisseur= fournisseurMapper.dtoToModel(fournisseurDto);
         return fournisseurMapper.modelToDto(fournisseurRepository.save(fournisseur));
@@ -56,9 +55,8 @@ public class FournisseurServiceImplementation implements FournisseurServiceInter
     @Override
     public void deleteFournisseur(String ice) {
         isIceExists(ice);
-        Optional<Fournisseur> existingFournisseur = Optional.ofNullable(fournisseurRepository.findByIce(ice));
         isFournisseurExists(ice);
-        fournisseurRepository.deleteByIce(ice);
+        fournisseurRepository.deleteFournisseurByIce(ice);
 
     }
     public void isFournisseurExists(String ice){

@@ -15,26 +15,9 @@ public class Filiere implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Short id;
+
     @Column(unique = true)
     private String nom;
-    @ManyToMany
-    @JoinTable(
-            name="filiere_matiere",
-            joinColumns=@JoinColumn(name="filiere_nom"),
-            inverseJoinColumns=@JoinColumn(name="matiere_id")
-    )
-    List<MatierePremiere> matierePremieres;
-
-    /*
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private byte id; //byte: from -128 to 127
-     */
-
-    /*
-    @OneToMany(mappedBy = "filiere")
-    private List<MatierePremiere> matierePremieres;
-     */
 
     public String getNom() {
         return nom;
@@ -44,11 +27,11 @@ public class Filiere implements Serializable {
         this.nom = nom;
     }
 
-    public List<MatierePremiere> getMatierePremieres() {
-        return matierePremieres;
+    public Short getId() {
+        return id;
     }
 
-    public void setMatierePremieres(List<MatierePremiere> matierePremieres) {
-        this.matierePremieres = matierePremieres;
+    public void setId(Short id) {
+        this.id = id;
     }
 }

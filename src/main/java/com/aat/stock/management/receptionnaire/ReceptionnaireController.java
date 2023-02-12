@@ -26,7 +26,7 @@ public class ReceptionnaireController {
     public ResponseEntity<ReceptionnaireDto> saveReceptionnaire(@RequestBody ReceptionnaireDto receptionnaireDto){
         return new ResponseEntity<>(receptionnaireServiceIntr.saveReceptionnaires(receptionnaireDto), HttpStatus.CREATED);
     }
-    @PostMapping("/update/{cne}")
+    @PutMapping("/update/{cne}")
     public ResponseEntity<ReceptionnaireDto> updateReceptionnaire(@PathVariable String cne ,@RequestBody ReceptionnaireDto receptionnaireDto){
         receptionnaireDto.setCne(cne);
         return new ResponseEntity<>(receptionnaireServiceIntr.saveReceptionnaires(receptionnaireDto), HttpStatus.OK);

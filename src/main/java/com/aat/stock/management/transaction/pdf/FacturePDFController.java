@@ -1,4 +1,4 @@
-package com.aat.stock.management.pdf;
+package com.aat.stock.management.transaction.pdf;
 
 import com.lowagie.text.DocumentException;
 import org.springframework.web.bind.annotation.GetMapping;

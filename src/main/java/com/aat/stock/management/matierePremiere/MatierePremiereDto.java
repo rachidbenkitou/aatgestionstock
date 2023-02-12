@@ -1,9 +1,13 @@
 package com.aat.stock.management.matierePremiere;
 
+import com.aat.stock.management.filiere.Filiere;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,15 +22,16 @@ public class MatierePremiereDto {
     private short stockInitial;  //short: from -32768 to 32767
     private short totaleEntree;
     private short totaleSortie;
-
-
-    /*
     @JsonIgnore
-    private List<MatiereFournisseurEntree> matiereFournisseurEntrees;
-     */
+    private List<Filiere> filieres;
 
-    //private Filiere filiere;
+    public List<Filiere> getFilieres() {
+        return filieres;
+    }
 
+    public void setFilieres(List<Filiere> filieres) {
+        this.filieres = filieres;
+    }
 
     public String getNumeroBrNumeroBs() {
         return numeroBrNumeroBs;
