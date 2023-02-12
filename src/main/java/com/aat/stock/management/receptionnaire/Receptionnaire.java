@@ -5,6 +5,7 @@ import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenant
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Receptionnaire extends Intervenant implements Serializable {
     private String prenom;
+    @Column(unique = true)
     private String cne;
 
 /*

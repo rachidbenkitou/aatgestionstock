@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Fournisseur extends Intervenant implements Serializable {
+    @Column(unique = true)
     private String ice;
     @JsonIgnore
     @OneToMany(mappedBy = "fournisseur",fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
