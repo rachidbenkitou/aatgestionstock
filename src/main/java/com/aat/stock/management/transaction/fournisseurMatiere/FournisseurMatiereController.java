@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/transaction/entree")
+@CrossOrigin("*")
 public class FournisseurMatiereController {
     @Autowired
     private FournisseurMatiereService fournisseurMatiereService;
@@ -24,6 +25,7 @@ public class FournisseurMatiereController {
 
     @PostMapping("/save")
     public ResponseEntity<FournisseurMatiereDto> saveFournisseurMatiere(@RequestBody FournisseurMatiereDto fournisseurMatiereDto){
+        
         return  new ResponseEntity<>(fournisseurMatiereService.saveFournisseurMatiere(fournisseurMatiereDto), HttpStatus.CREATED);
     }
 

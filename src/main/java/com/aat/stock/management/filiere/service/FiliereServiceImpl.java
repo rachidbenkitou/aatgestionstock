@@ -45,7 +45,7 @@ public class FiliereServiceImpl implements FiliereServiceIntr {
 
     @Override
     public FiliereDto saveFiliere(FiliereDto filiereDto) throws FiliereAlreadyExistsException{
-        isFiliereExiste(filiereDto.getId());
+        // isFiliereExiste(filiereDto.getId());
         Filiere filiere = filiereMapper.dtoToModel(filiereDto);
         Filiere savedFiliere = filiereRepository.save(filiere);
         return filiereMapper.modelToDto(savedFiliere);
@@ -66,7 +66,7 @@ public class FiliereServiceImpl implements FiliereServiceIntr {
     @Override
     public void deleteFiliere(Short id) throws FiliereNotFoundException,NomFiliereNotProvided{
 
-          filiereRepository.deleteById(id);
+        filiereRepository.deleteById(id);
     }
 
     public void  isFiliereExiste(Short id)throws FiliereAlreadyExistsException{

@@ -14,4 +14,6 @@ public interface MatierePremiereRepository extends JpaRepository<MatierePremiere
     @Query("select m from MatierePremiere m where m.designation like :kw")
     public List<MatierePremiere> findMatierePremiereByDesign(@Param("kw") String keyword);
     MatierePremiere findMatierePremiereByDesignation(String designation);
+    @Query("select m from MatierePremiere m where m.code=?1")
+    MatierePremiere findBycodeMatierePremiere(String code);
 }

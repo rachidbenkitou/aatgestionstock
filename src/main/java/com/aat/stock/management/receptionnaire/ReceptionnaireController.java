@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/receptionnaire")
+@CrossOrigin("*")
 public class ReceptionnaireController {
     @Autowired
     private ReceptionnaireServiceIntr receptionnaireServiceIntr;
@@ -29,7 +30,7 @@ public class ReceptionnaireController {
     @PutMapping("/update/{cne}")
     public ResponseEntity<ReceptionnaireDto> updateReceptionnaire(@PathVariable String cne ,@RequestBody ReceptionnaireDto receptionnaireDto){
         receptionnaireDto.setCne(cne);
-        return new ResponseEntity<>(receptionnaireServiceIntr.saveReceptionnaires(receptionnaireDto), HttpStatus.OK);
+        return new ResponseEntity<>(receptionnaireServiceIntr.updateReceptionnaires(receptionnaireDto), HttpStatus.OK);
     }
     @DeleteMapping("/delete/{cne}")
     public ResponseEntity<?> deleteReceptionnaire(@PathVariable String cne){

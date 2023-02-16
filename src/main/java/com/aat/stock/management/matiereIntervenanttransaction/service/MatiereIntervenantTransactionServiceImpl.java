@@ -1,7 +1,9 @@
 package com.aat.stock.management.matiereIntervenanttransaction.service;
 
-import com.aat.stock.management.fournisseur.Fournisseur;
-import com.aat.stock.management.matiereIntervenanttransaction.*;
+import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
+import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransactionDTO;
+import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransactionMapper;
+import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransactionRepository;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
 import com.aat.stock.management.matierePremiere.MatierePremiereRepository;
 import com.aat.stock.management.matierePremiere.exceptions.MatierePremiereNotFoundException;

@@ -1,18 +1,30 @@
 package com.aat.stock.management.transaction.pdf;
 
+import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiereDto;
+import com.aat.stock.management.transaction.receptionnaireMatiere.ReceptionnaireMatiereDto;
 import com.lowagie.text.*;
 import com.lowagie.text.Font;
 import com.lowagie.text.Image;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 public class FactureReceptionPDFExport {
+
+    private List<FournisseurMatiereDto> fournisseurMatiereDtos;
+
+    public FactureReceptionPDFExport(List<FournisseurMatiereDto> fournisseurMatiereDtos) {
+        this.fournisseurMatiereDtos = fournisseurMatiereDtos;
+    }
+
     public void export(HttpServletResponse response)throws DocumentException, IOException {
 
         Document document = new Document(PageSize.A4);
@@ -69,10 +81,10 @@ public class FactureReceptionPDFExport {
         cell1.setPhrase(new Phrase("DATE DE RECEPTION ", font));
         table2.addCell(cell1);
         table2.addCell(table3);
+        table2.addCell(fournisseurMatiereDtos.get(0).getFournisseurIce());
+        table2.addCell("----------------");
         table2.addCell("...............");
-        table2.addCell("...............");
-        table2.addCell("...............");
-        table2.addCell("...............");
+        table2.addCell(""+formater1.format(aujourdhui));
         //table des transaction
         PdfPTable table = new PdfPTable(6);
         table.setWidthPercentage(100f);
@@ -95,13 +107,16 @@ public class FactureReceptionPDFExport {
         table.addCell(cell);
         cell.setPhrase(new Phrase("PU/HT", font));
         table.addCell(cell);
-        for(int i =0 ;i<3;i++){
-            table.addCell("...............");
-            table.addCell("...............");
-            table.addCell("...............");
-            table.addCell("......................");
-            table.addCell("......................");
-            table.addCell("......................");
+        int i =1;
+        for(FournisseurMatiereDto f : fournisseurMatiereDtos){
+
+            table.addCell(f.getArticleCode());
+            table.addCell(""+i);
+            table.addCell(f.getArticleDesignation());
+            table.addCell(f.getUnite());
+            table.addCell(""+f.getQuantiteLivre());
+            table.addCell("------------------");
+            i++;
         }
         PdfPTable table1 = new PdfPTable(1);
         table1.setWidthPercentage(100f);

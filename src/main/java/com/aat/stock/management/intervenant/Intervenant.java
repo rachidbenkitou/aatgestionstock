@@ -1,7 +1,6 @@
 package com.aat.stock.management.intervenant;
 
 
-import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -24,10 +23,6 @@ public abstract class Intervenant {
     //private String prenom;
     private String telephone;
     private String email;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "intervenant")
-    List<MatiereIntervenantTransaction> matiereIntervenantTransactions;
 
     public Long getId() {
         return id;
@@ -72,11 +67,4 @@ public abstract class Intervenant {
 
      */
 
-    public List<MatiereIntervenantTransaction> getMatiereIntervenantTransactions() {
-        return matiereIntervenantTransactions;
-    }
-
-    public void setMatiereIntervenantTransactions(List<MatiereIntervenantTransaction> matiereIntervenantTransactions) {
-        this.matiereIntervenantTransactions = matiereIntervenantTransactions;
-    }
 }

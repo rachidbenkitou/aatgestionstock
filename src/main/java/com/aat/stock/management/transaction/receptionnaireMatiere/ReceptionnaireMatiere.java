@@ -36,12 +36,13 @@ public class ReceptionnaireMatiere implements Serializable {
     private String lieuAffectation;
     private double puHt;
     private String receptionnaireCne;
+    private String articleCode;
     private String articleDesignation;
 
     public ReceptionnaireMatiere() {
     }
 
-    public ReceptionnaireMatiere(ReceptionnaireMatiereId receptionnaireMatiereId, MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String lieuAffectation, double puHt, String receptionnaireCne, String articleDesignation) {
+    public ReceptionnaireMatiere(ReceptionnaireMatiereId receptionnaireMatiereId, MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String lieuAffectation, double puHt, String receptionnaireCne,String articleCode, String articleDesignation) {
         this.receptionnaireMatiereId = receptionnaireMatiereId;
         this.matierePremiere = matierePremiere;
         this.receptionnaire = receptionnaire;
@@ -53,6 +54,7 @@ public class ReceptionnaireMatiere implements Serializable {
         this.lieuAffectation = lieuAffectation;
         this.puHt = puHt;
         this.receptionnaireCne = receptionnaireCne;
+        this.articleCode = articleCode;
         this.articleDesignation = articleDesignation;
     }
 
@@ -142,6 +144,14 @@ public class ReceptionnaireMatiere implements Serializable {
 
     public void setReceptionnaireCne(String receptionnaireCne) {
         this.receptionnaireCne = receptionnaireCne;
+    }
+
+    public String getArticleCode() {
+        return articleCode;
+    }
+
+    public void setArticleCode(String articleCode) {
+        this.articleCode = articleCode;
     }
 
     public String getArticleDesignation() {

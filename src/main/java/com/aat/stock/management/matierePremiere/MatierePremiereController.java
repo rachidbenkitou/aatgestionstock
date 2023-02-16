@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping("matiere-premiere")
 @CrossOrigin("*")
 public class MatierePremiereController {
+
     @Autowired
     private MatierePremiereServiceInterface matierePremiereServiceInterface;
     @GetMapping("/all")

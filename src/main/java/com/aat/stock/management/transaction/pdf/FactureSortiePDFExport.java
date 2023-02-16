@@ -1,5 +1,9 @@
 package com.aat.stock.management.transaction.pdf;
 
+import com.aat.stock.management.matierePremiere.MatierePremiereDto;
+import com.aat.stock.management.matierePremiere.MatierePremiereRepository;
+import com.aat.stock.management.matierePremiere.service.MatierePremiereServiceInterface;
+import com.aat.stock.management.transaction.receptionnaireMatiere.ReceptionnaireMatiereDto;
 import com.lowagie.text.*;
 import com.lowagie.text.Font;
 import com.lowagie.text.Image;
@@ -7,15 +11,28 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class FactureSortiePDFExport {
-    public void export(HttpServletResponse response)throws DocumentException, IOException {
 
+
+
+    private List<ReceptionnaireMatiereDto> receptionnaireMatiereDtos;
+
+    public FactureSortiePDFExport(List<ReceptionnaireMatiereDto> receptionnaireMatiereDtos) {
+        this.receptionnaireMatiereDtos = receptionnaireMatiereDtos;
+    }
+
+    public void export(HttpServletResponse response)throws DocumentException, IOException {
+        
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
 
@@ -51,11 +68,11 @@ public class FactureSortiePDFExport {
         table.addCell(cell);
         cell.setPhrase(new Phrase("QTE", font));
         table.addCell(cell);
-        for(int i =0 ;i<3;i++){
-        table.addCell("...............");
-        table.addCell("...............");
-        table.addCell("...............");
-        table.addCell("......................");
+        for(ReceptionnaireMatiereDto r: receptionnaireMatiereDtos){
+        table.addCell(r.getArticleCode());
+        table.addCell(r.getArticleDesignation());
+        table.addCell(r.getUnite());
+        table.addCell(""+r.getQuantiteLivre());
         }
         PdfPTable table1 = new PdfPTable(2);
         table1.setWidthPercentage(30f);

@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/transaction/sortie")
+@CrossOrigin("*")
 public class ReceptionnaireMatiereController {
     @Autowired
     private ReceptionnaireMatiereService receptionnaireMatiereService;

@@ -34,8 +34,10 @@ public class FournisseurMatiere  implements Serializable{
     private String unite;
     private String fournisseurIce;
     //@JsonIgnore
+    private String articleCode;
     private String articleDesignation;
-    public FournisseurMatiere(FournisseurMatiereId fournisseurMatiereId, MatierePremiere matierePremiere, Fournisseur fournisseur, boolean isUrgence, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite) {
+
+    public FournisseurMatiere(FournisseurMatiereId fournisseurMatiereId, MatierePremiere matierePremiere, Fournisseur fournisseur, boolean isUrgence, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String fournisseurIce, String articleCode,String articleDesignation) {
         this.fournisseurMatiereId = fournisseurMatiereId;
         this.matierePremiere = matierePremiere;
         this.fournisseur = fournisseur;
@@ -45,6 +47,9 @@ public class FournisseurMatiere  implements Serializable{
         this.quantiteLivre = quantiteLivre;
         this.isConfirmed = isConfirmed;
         this.unite = unite;
+        this.fournisseurIce = fournisseurIce;
+        this.articleCode = articleCode;
+        this.articleDesignation = articleDesignation;
     }
 
     public FournisseurMatiere() {
@@ -58,13 +63,6 @@ public class FournisseurMatiere  implements Serializable{
         this.fournisseurIce = fournisseurIce;
     }
 
-    public String getArticleDesignation() {
-        return articleDesignation;
-    }
-
-    public void setArticleDesignation(String articleDesignation) {
-        this.articleDesignation = articleDesignation;
-    }
 
     public Date getDateTransaction() {
         return dateTransaction;
@@ -136,5 +134,21 @@ public class FournisseurMatiere  implements Serializable{
 
     public void setUrgence(boolean urgence) {
         isUrgence = urgence;
+    }
+
+    public String getArticleCode() {
+        return articleCode;
+    }
+
+    public void setArticleCode(String articleCode) {
+        this.articleCode = articleCode;
+    }
+
+    public String getArticleDesignation() {
+        return articleDesignation;
+    }
+
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
     }
 }

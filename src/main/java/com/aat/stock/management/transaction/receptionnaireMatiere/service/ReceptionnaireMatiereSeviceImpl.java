@@ -38,10 +38,10 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
 
     @Override
     public ReceptionnaireMatiereDto saveReceptionnaireMatiere(ReceptionnaireMatiereDto receptionnaireMatiereDto) {
-        short quatiteReste=matierePremiereServiceInterface.MatierePremierefindByDesignation(receptionnaireMatiereDto.getArticleDesignation()).getStockActuel();
+        short quatiteReste=matierePremiereRepository.findBycodeMatierePremiere(receptionnaireMatiereDto.getArticleCode()).getStockActuel();
         if(quatiteReste-receptionnaireMatiereDto.getQuantiteLivre()<0)
             throw new ReceptonnaireMatiereQuantityInsufisant("La quatité ets insuffisante, il reste que "+quatiteReste);
-        MatierePremiere matierePremiere=matierePremiereRepository.findMatierePremiereByDesignation(receptionnaireMatiereDto.getArticleDesignation());
+        MatierePremiere matierePremiere=matierePremiereRepository.findBycodeMatierePremiere(receptionnaireMatiereDto.getArticleCode());
         if (matierePremiere==null) throw new MatierePremiereNotFoundException("La matière premiére n'existe pas.");
         Receptionnaire receptionnaire =receptionnaireRepository.findByCne(receptionnaireMatiereDto.getReceptionnaireCne());
         if (receptionnaire==null) throw  new FournisseurNotFoundException("Le fournisseur n'existe pas.");

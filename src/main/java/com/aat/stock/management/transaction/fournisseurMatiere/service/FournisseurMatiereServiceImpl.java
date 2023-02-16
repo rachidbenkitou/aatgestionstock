@@ -48,7 +48,7 @@ public class FournisseurMatiereServiceImpl implements FournisseurMatiereService{
 
     @Override
     public FournisseurMatiereDto saveFournisseurMatiere(FournisseurMatiereDto fournisseurMatiereDto) {
-        MatierePremiere matierePremiere=matierePremiereRepository.findMatierePremiereByDesignation(fournisseurMatiereDto.getArticleDesignation());
+        MatierePremiere matierePremiere=matierePremiereRepository.findBycodeMatierePremiere(fournisseurMatiereDto.getArticleCode());
         if (matierePremiere==null) throw new MatierePremiereNotFoundException("La matière premiére n'existe pas.");
         Fournisseur fournisseur=fournisseurRepository.findByIce(fournisseurMatiereDto.getFournisseurIce());
         if (fournisseur==null) throw  new FournisseurNotFoundException("Le fournisseur n'existe pas.");

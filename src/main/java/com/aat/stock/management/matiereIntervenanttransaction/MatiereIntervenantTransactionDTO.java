@@ -1,13 +1,6 @@
 package com.aat.stock.management.matiereIntervenanttransaction;
 
-import com.aat.stock.management.intervenant.Intervenant;
-import com.aat.stock.management.matierePremiere.MatierePremiere;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Transient;
 import java.util.Date;

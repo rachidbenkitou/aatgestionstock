@@ -22,13 +22,14 @@ public class ReceptionnaireMatiereDto {
     private String unite;
     private String lieuAffectation;
     private double puHt;
-    private String receptionnaireCne;
+    private String receptionnairecCne;
+    private String articleCode;
     private String articleDesignation;
 
     public ReceptionnaireMatiereDto() {
     }
 
-    public ReceptionnaireMatiereDto(MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String lieuAffectation, double puHt, String receptionnaireCne, String articleDesignation) {
+    public ReceptionnaireMatiereDto(MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String lieuAffectation, double puHt, String receptionnaireCne, String articleCode,String articleDesignation) {
         this.matierePremiere = matierePremiere;
         this.receptionnaire = receptionnaire;
         this.dateTransaction = dateTransaction;
@@ -38,8 +39,9 @@ public class ReceptionnaireMatiereDto {
         this.unite = unite;
         this.lieuAffectation = lieuAffectation;
         this.puHt = puHt;
-        this.receptionnaireCne = receptionnaireCne;
-        this.articleDesignation = articleDesignation;
+        this.receptionnairecCne = receptionnairecCne;
+        this.articleCode = articleCode;
+        this.articleDesignation=articleDesignation;
     }
 
     public ReceptionnaireMatiereId getReceptionnaireMatiereId() {
@@ -123,11 +125,27 @@ public class ReceptionnaireMatiereDto {
     }
 
     public String getReceptionnaireCne() {
-        return receptionnaireCne;
+        return receptionnairecCne;
     }
 
     public void setReceptionnaireCne(String receptionnaireCne) {
-        this.receptionnaireCne = receptionnaireCne;
+        this.receptionnairecCne = receptionnaireCne;
+    }
+
+    public String getArticleCode() {
+        return articleCode;
+    }
+
+    public void setArticleCode(String articleCode) {
+        this.articleCode = articleCode;
+    }
+
+    public String getReceptionnairecCne() {
+        return receptionnairecCne;
+    }
+
+    public void setReceptionnairecCne(String receptionnairecCne) {
+        this.receptionnairecCne = receptionnairecCne;
     }
 
     public String getArticleDesignation() {

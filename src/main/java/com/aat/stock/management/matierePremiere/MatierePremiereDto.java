@@ -22,7 +22,7 @@ public class MatierePremiereDto {
     private short stockInitial;  //short: from -32768 to 32767
     private short totaleEntree;
     private short totaleSortie;
-    @JsonIgnore
+    // @JsonIgnore
     private List<Filiere> filieres;
 
     public List<Filiere> getFilieres() {

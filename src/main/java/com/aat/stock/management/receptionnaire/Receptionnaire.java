@@ -1,7 +1,6 @@
 package com.aat.stock.management.receptionnaire;
 
 import com.aat.stock.management.intervenant.Intervenant;
-import com.aat.stock.management.matiereIntervenanttransaction.MatiereIntervenantTransaction;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @DiscriminatorValue("receptionnaire")

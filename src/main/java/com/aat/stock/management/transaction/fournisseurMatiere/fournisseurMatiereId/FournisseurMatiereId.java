@@ -8,6 +8,7 @@ public class FournisseurMatiereId implements Serializable {
     private Long fournisseurId;
     private String matiereId;
 
+
     public FournisseurMatiereId(Long fournisseurId, String matiereId) {
         this.fournisseurId = fournisseurId;
         this.matiereId = matiereId;

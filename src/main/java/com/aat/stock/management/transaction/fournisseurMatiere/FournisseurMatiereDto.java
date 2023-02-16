@@ -21,12 +21,13 @@ public class FournisseurMatiereDto  {
     //@JsonIgnore
     private String fournisseurIce;
     //@JsonIgnore
+    private String articleCode;
     private String articleDesignation;
 
     public FournisseurMatiereDto() {
     }
 
-    public FournisseurMatiereDto(FournisseurMatiereId fournisseurMatiereId, MatierePremiere matierePremiere, Fournisseur fournisseur, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, boolean isUrgence, String fournisseurIce, String articleDesignation) {
+    public FournisseurMatiereDto(FournisseurMatiereId fournisseurMatiereId, MatierePremiere matierePremiere, Fournisseur fournisseur, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, boolean isUrgence, String fournisseurIce,String articleCode, String articleDesignation) {
         this.fournisseurMatiereId = fournisseurMatiereId;
         this.matierePremiere = matierePremiere;
         this.fournisseur = fournisseur;
@@ -37,7 +38,8 @@ public class FournisseurMatiereDto  {
         this.unite = unite;
         this.isUrgence = isUrgence;
         this.fournisseurIce = fournisseurIce;
-        this.articleDesignation = articleDesignation;
+        this.articleCode= articleCode;
+        this.articleDesignation= articleDesignation;
     }
 
     public String getFournisseurIce() {
@@ -48,12 +50,12 @@ public class FournisseurMatiereDto  {
         this.fournisseurIce = fournisseurIce;
     }
 
-    public String getArticleDesignation() {
-        return articleDesignation;
+    public String getArticleCode() {
+        return articleCode;
     }
 
-    public void setArticleDesignation(String articleDesignation) {
-        this.articleDesignation = articleDesignation;
+    public void setArticleCode(String articleCode) {
+        this.articleCode = articleCode;
     }
 
     public FournisseurMatiereId getFournisseurMatiereId() {
@@ -126,5 +128,13 @@ public class FournisseurMatiereDto  {
 
     public void setUrgence(boolean urgence) {
         isUrgence = urgence;
+    }
+
+    public String getArticleDesignation() {
+        return articleDesignation;
+    }
+
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
     }
 }
