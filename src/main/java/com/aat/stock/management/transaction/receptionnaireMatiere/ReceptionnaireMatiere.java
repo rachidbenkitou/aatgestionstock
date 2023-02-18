@@ -1,9 +1,7 @@
 package com.aat.stock.management.transaction.receptionnaireMatiere;
 
-import com.aat.stock.management.fournisseur.Fournisseur;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
 import com.aat.stock.management.receptionnaire.Receptionnaire;
-import com.aat.stock.management.transaction.receptionnaireMatiere.receptionnaireMatiereId.ReceptionnaireMatiereId;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,15 +11,13 @@ import java.util.Date;
 
 @Entity
 public class ReceptionnaireMatiere implements Serializable {
-    @EmbeddedId
-    private ReceptionnaireMatiereId receptionnaireMatiereId;
-
-    @ManyToOne(fetch= FetchType.LAZY,  cascade = CascadeType.PERSIST)
-    @MapsId("matiereId")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idTransactionSortie;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_matiere_premiere")
     MatierePremiere matierePremiere;
-    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @MapsId("receptionnaireId")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_receptionnaire")
     Receptionnaire receptionnaire;
     @Temporal(TemporalType.TIMESTAMP)
@@ -33,8 +29,8 @@ public class ReceptionnaireMatiere implements Serializable {
     private short quantiteLivre;
     private boolean isConfirmed;
     private String unite;
-    private String lieuAffectation;
-    private double puHt;
+    //private String lieuAffectation;
+    //private double puHt;
     private String receptionnaireCne;
     private String articleCode;
     private String articleDesignation;
@@ -42,8 +38,8 @@ public class ReceptionnaireMatiere implements Serializable {
     public ReceptionnaireMatiere() {
     }
 
-    public ReceptionnaireMatiere(ReceptionnaireMatiereId receptionnaireMatiereId, MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String lieuAffectation, double puHt, String receptionnaireCne,String articleCode, String articleDesignation) {
-        this.receptionnaireMatiereId = receptionnaireMatiereId;
+    public ReceptionnaireMatiere(Long idTransactionSortie, MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String receptionnaireCne, String articleCode, String articleDesignation) {
+        this.idTransactionSortie = idTransactionSortie;
         this.matierePremiere = matierePremiere;
         this.receptionnaire = receptionnaire;
         this.dateTransaction = dateTransaction;
@@ -51,19 +47,25 @@ public class ReceptionnaireMatiere implements Serializable {
         this.quantiteLivre = quantiteLivre;
         this.isConfirmed = isConfirmed;
         this.unite = unite;
-        this.lieuAffectation = lieuAffectation;
-        this.puHt = puHt;
         this.receptionnaireCne = receptionnaireCne;
         this.articleCode = articleCode;
         this.articleDesignation = articleDesignation;
     }
 
-    public ReceptionnaireMatiereId getReceptionnaireMatiereId() {
-        return receptionnaireMatiereId;
+    public String getArticleDesignation() {
+        return articleDesignation;
     }
 
-    public void setReceptionnaireMatiereId(ReceptionnaireMatiereId receptionnaireMatiereId) {
-        this.receptionnaireMatiereId = receptionnaireMatiereId;
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
+    }
+
+    public Long getIdTransactionSortie() {
+        return idTransactionSortie;
+    }
+
+    public void setIdTransactionSortie(Long idTransactionSortie) {
+        this.idTransactionSortie = idTransactionSortie;
     }
 
     public MatierePremiere getMatierePremiere() {
@@ -122,22 +124,6 @@ public class ReceptionnaireMatiere implements Serializable {
         this.unite = unite;
     }
 
-    public String getLieuAffectation() {
-        return lieuAffectation;
-    }
-
-    public void setLieuAffectation(String lieuAffectation) {
-        this.lieuAffectation = lieuAffectation;
-    }
-
-    public double getPuHt() {
-        return puHt;
-    }
-
-    public void setPuHt(double puHt) {
-        this.puHt = puHt;
-    }
-
     public String getReceptionnaireCne() {
         return receptionnaireCne;
     }
@@ -154,11 +140,4 @@ public class ReceptionnaireMatiere implements Serializable {
         this.articleCode = articleCode;
     }
 
-    public String getArticleDesignation() {
-        return articleDesignation;
-    }
-
-    public void setArticleDesignation(String articleDesignation) {
-        this.articleDesignation = articleDesignation;
-    }
 }

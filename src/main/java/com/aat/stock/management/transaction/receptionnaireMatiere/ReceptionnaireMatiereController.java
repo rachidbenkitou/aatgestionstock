@@ -26,8 +26,9 @@ public class ReceptionnaireMatiereController {
     public ResponseEntity<ReceptionnaireMatiereDto> saveReceptionnaireMatiere(@RequestBody ReceptionnaireMatiereDto receptionnaireMatiereDto){
         return  new ResponseEntity<>(receptionnaireMatiereService.saveReceptionnaireMatiere(receptionnaireMatiereDto), HttpStatus.CREATED);
     }
-    @PutMapping("/update")
-    public ResponseEntity<ReceptionnaireMatiereDto> updateReceptionnaireMatiere(@RequestBody ReceptionnaireMatiereDto receptionnaireMatiereDto){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ReceptionnaireMatiereDto> updateReceptionnaireMatiere(@RequestBody ReceptionnaireMatiereDto receptionnaireMatiereDto, @PathVariable Long id){
+        receptionnaireMatiereDto.setIdTransactionSortie(id);
         return  new ResponseEntity<>(receptionnaireMatiereService.updateReceptionnaireMatiere(receptionnaireMatiereDto), HttpStatus.OK);
     }
     @PutMapping("/move-stock/{designation}/{quatite}")

@@ -2,12 +2,11 @@ package com.aat.stock.management.transaction.fournisseurMatiere;
 
 import com.aat.stock.management.fournisseur.Fournisseur;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
-import com.aat.stock.management.transaction.fournisseurMatiere.fournisseurMatiereId.FournisseurMatiereId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 public class FournisseurMatiereDto  {
-    private FournisseurMatiereId fournisseurMatiereId;
+    private Long idTransactionEntree;
     @JsonIgnore
     MatierePremiere matierePremiere;
     @JsonIgnore
@@ -17,6 +16,8 @@ public class FournisseurMatiereDto  {
     private short quantiteLivre;
     private boolean isConfirmed;
     private String unite;
+    private String lieuAffectation;
+    private double puHt;
     private boolean isUrgence;
     //@JsonIgnore
     private String fournisseurIce;
@@ -24,11 +25,12 @@ public class FournisseurMatiereDto  {
     private String articleCode;
     private String articleDesignation;
 
+
     public FournisseurMatiereDto() {
     }
 
-    public FournisseurMatiereDto(FournisseurMatiereId fournisseurMatiereId, MatierePremiere matierePremiere, Fournisseur fournisseur, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, boolean isUrgence, String fournisseurIce,String articleCode, String articleDesignation) {
-        this.fournisseurMatiereId = fournisseurMatiereId;
+    public FournisseurMatiereDto(Long idTransactionEntree, MatierePremiere matierePremiere, Fournisseur fournisseur, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String lieuAffectation, double puHt, boolean isUrgence, String fournisseurIce, String articleCode, String articleDesignation) {
+        this.idTransactionEntree = idTransactionEntree;
         this.matierePremiere = matierePremiere;
         this.fournisseur = fournisseur;
         this.dateTransaction = dateTransaction;
@@ -36,10 +38,20 @@ public class FournisseurMatiereDto  {
         this.quantiteLivre = quantiteLivre;
         this.isConfirmed = isConfirmed;
         this.unite = unite;
+        this.lieuAffectation = lieuAffectation;
+        this.puHt = puHt;
         this.isUrgence = isUrgence;
         this.fournisseurIce = fournisseurIce;
-        this.articleCode= articleCode;
-        this.articleDesignation= articleDesignation;
+        this.articleCode = articleCode;
+        this.articleDesignation = articleDesignation;
+    }
+
+    public String getArticleDesignation() {
+        return articleDesignation;
+    }
+
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
     }
 
     public String getFournisseurIce() {
@@ -50,6 +62,22 @@ public class FournisseurMatiereDto  {
         this.fournisseurIce = fournisseurIce;
     }
 
+    public String getLieuAffectation() {
+        return lieuAffectation;
+    }
+
+    public void setLieuAffectation(String lieuAffectation) {
+        this.lieuAffectation = lieuAffectation;
+    }
+
+    public double getPuHt() {
+        return puHt;
+    }
+
+    public void setPuHt(double puHt) {
+        this.puHt = puHt;
+    }
+
     public String getArticleCode() {
         return articleCode;
     }
@@ -58,12 +86,12 @@ public class FournisseurMatiereDto  {
         this.articleCode = articleCode;
     }
 
-    public FournisseurMatiereId getFournisseurMatiereId() {
-        return fournisseurMatiereId;
+    public Long getIdTransactionEntree() {
+        return idTransactionEntree;
     }
 
-    public void setFournisseurMatiereId(FournisseurMatiereId fournisseurMatiereId) {
-        this.fournisseurMatiereId = fournisseurMatiereId;
+    public void setIdTransactionEntree(Long idTransactionEntree) {
+        this.idTransactionEntree = idTransactionEntree;
     }
 
     public MatierePremiere getMatierePremiere() {
@@ -130,11 +158,4 @@ public class FournisseurMatiereDto  {
         isUrgence = urgence;
     }
 
-    public String getArticleDesignation() {
-        return articleDesignation;
-    }
-
-    public void setArticleDesignation(String articleDesignation) {
-        this.articleDesignation = articleDesignation;
-    }
 }

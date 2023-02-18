@@ -8,9 +8,10 @@ import com.aat.stock.management.matierePremiere.MatierePremiereDto;
 import com.aat.stock.management.matierePremiere.MatierePremiereRepository;
 import com.aat.stock.management.matierePremiere.exceptions.MatierePremiereNotFoundException;
 import com.aat.stock.management.matierePremiere.service.MatierePremiereServiceInterface;
-import com.aat.stock.management.transaction.fournisseurMatiere.*;
-import com.aat.stock.management.transaction.fournisseurMatiere.fournisseurMatiereId.FournisseurMatiereId;
-import com.aat.stock.management.transaction.fournisseurMatiere.fournisseurMatiereId.FournisseurMatiereIdFactory;
+import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiere;
+import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiereDto;
+import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiereMapper;
+import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiereRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,6 @@ public class FournisseurMatiereServiceImpl implements FournisseurMatiereService{
     private FournisseurRepository fournisseurRepository;
     @Autowired
     private FournisseurMatiereMapper fournisseurMatiereMapper;
-    @Autowired
-    private FournisseurMatiereIdFactory fournisseurMatiereIdFactory;
     @Override
     public List<FournisseurMatiereDto> listFournisseurMatiere() {
         List <FournisseurMatiere> fournisseurMatieres = fournisseurMatiereRepository.findAll();
@@ -55,8 +54,6 @@ public class FournisseurMatiereServiceImpl implements FournisseurMatiereService{
         fournisseurMatiereDto.setMatierePremiere(matierePremiere);
         fournisseurMatiereDto.setFournisseur(fournisseur);
         fournisseurMatiereDto.setConfirmed(false);
-        FournisseurMatiereId fournisseurMatiereId=fournisseurMatiereIdFactory.createFournisseurMatiereId(fournisseur.getId(),matierePremiere.getCode());
-        fournisseurMatiereDto.setFournisseurMatiereId(fournisseurMatiereId);
         FournisseurMatiere savedFournisseurMatiere=fournisseurMatiereRepository.save(fournisseurMatiereMapper.dtoToModel(fournisseurMatiereDto));
 
         return fournisseurMatiereMapper.modelToDto(savedFournisseurMatiere);

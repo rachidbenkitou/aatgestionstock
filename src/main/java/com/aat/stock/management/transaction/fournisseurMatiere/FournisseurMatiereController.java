@@ -29,8 +29,9 @@ public class FournisseurMatiereController {
         return  new ResponseEntity<>(fournisseurMatiereService.saveFournisseurMatiere(fournisseurMatiereDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<FournisseurMatiereDto> updateFournisseurMatiere(@RequestBody FournisseurMatiereDto fournisseurMatiereDto){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<FournisseurMatiereDto> updateFournisseurMatiere(@RequestBody FournisseurMatiereDto fournisseurMatiereDto, @PathVariable Long id){
+        fournisseurMatiereDto.setIdTransactionEntree(id);
         return  new ResponseEntity<>(fournisseurMatiereService.updateFournisseurMatiere(fournisseurMatiereDto), HttpStatus.OK);
     }
 

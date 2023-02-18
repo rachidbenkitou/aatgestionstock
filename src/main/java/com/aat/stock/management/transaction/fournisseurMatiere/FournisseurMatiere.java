@@ -2,7 +2,6 @@ package com.aat.stock.management.transaction.fournisseurMatiere;
 
 import com.aat.stock.management.fournisseur.Fournisseur;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
-import com.aat.stock.management.transaction.fournisseurMatiere.fournisseurMatiereId.FournisseurMatiereId;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,14 +11,13 @@ import java.util.Date;
 
 @Entity
 public class FournisseurMatiere  implements Serializable{
-    @EmbeddedId
-    private FournisseurMatiereId fournisseurMatiereId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idTransactionEntree;
     @ManyToOne(fetch= FetchType.LAZY,  cascade = CascadeType.PERSIST)
-    @MapsId("matiereId")
     @JoinColumn(name = "id_matiere_premiere")
     MatierePremiere matierePremiere;
     @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @MapsId("fournisseurId")
     @JoinColumn(name = "id_fournisseur")
     Fournisseur fournisseur;
     private boolean isUrgence;
@@ -33,12 +31,14 @@ public class FournisseurMatiere  implements Serializable{
     private boolean isConfirmed;
     private String unite;
     private String fournisseurIce;
+    private String lieuAffectation;
+    private double puHt;
     //@JsonIgnore
     private String articleCode;
     private String articleDesignation;
 
-    public FournisseurMatiere(FournisseurMatiereId fournisseurMatiereId, MatierePremiere matierePremiere, Fournisseur fournisseur, boolean isUrgence, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String fournisseurIce, String articleCode,String articleDesignation) {
-        this.fournisseurMatiereId = fournisseurMatiereId;
+    public FournisseurMatiere(Long idTransactionEntree, MatierePremiere matierePremiere, Fournisseur fournisseur, boolean isUrgence, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String fournisseurIce, String lieuAffectation, double puHt, String articleCode, String articleDesignation) {
+        this.idTransactionEntree = idTransactionEntree;
         this.matierePremiere = matierePremiere;
         this.fournisseur = fournisseur;
         this.isUrgence = isUrgence;
@@ -48,11 +48,21 @@ public class FournisseurMatiere  implements Serializable{
         this.isConfirmed = isConfirmed;
         this.unite = unite;
         this.fournisseurIce = fournisseurIce;
+        this.lieuAffectation = lieuAffectation;
+        this.puHt = puHt;
         this.articleCode = articleCode;
         this.articleDesignation = articleDesignation;
     }
 
     public FournisseurMatiere() {
+    }
+
+    public String getArticleDesignation() {
+        return articleDesignation;
+    }
+
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
     }
 
     public String getFournisseurIce() {
@@ -74,6 +84,22 @@ public class FournisseurMatiere  implements Serializable{
 
     public Date getLastModified() {
         return lastModified;
+    }
+
+    public String getLieuAffectation() {
+        return lieuAffectation;
+    }
+
+    public void setLieuAffectation(String lieuAffectation) {
+        this.lieuAffectation = lieuAffectation;
+    }
+
+    public double getPuHt() {
+        return puHt;
+    }
+
+    public void setPuHt(double puHt) {
+        this.puHt = puHt;
     }
 
     public void setLastModified(Date lastModified) {
@@ -104,12 +130,12 @@ public class FournisseurMatiere  implements Serializable{
         this.unite = unite;
     }
 
-    public FournisseurMatiereId getFournisseurMatiereId() {
-        return fournisseurMatiereId;
+    public Long getIdTransactionEntree() {
+        return idTransactionEntree;
     }
 
-    public void setFournisseurMatiereId(FournisseurMatiereId fournisseurMatiereId) {
-        this.fournisseurMatiereId = fournisseurMatiereId;
+    public void setIdTransactionEntree(Long idTransactionEntree) {
+        this.idTransactionEntree = idTransactionEntree;
     }
 
     public MatierePremiere getMatierePremiere() {
@@ -144,11 +170,4 @@ public class FournisseurMatiere  implements Serializable{
         this.articleCode = articleCode;
     }
 
-    public String getArticleDesignation() {
-        return articleDesignation;
-    }
-
-    public void setArticleDesignation(String articleDesignation) {
-        this.articleDesignation = articleDesignation;
-    }
 }

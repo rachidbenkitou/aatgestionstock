@@ -13,8 +13,6 @@ import com.aat.stock.management.transaction.receptionnaireMatiere.Receptionnaire
 import com.aat.stock.management.transaction.receptionnaireMatiere.ReceptionnaireMatiereMapper;
 import com.aat.stock.management.transaction.receptionnaireMatiere.ReceptionnaireMatiereRepository;
 import com.aat.stock.management.transaction.receptionnaireMatiere.exception.ReceptonnaireMatiereQuantityInsufisant;
-import com.aat.stock.management.transaction.receptionnaireMatiere.receptionnaireMatiereId.ReceptionnaireMatiereFactory;
-import com.aat.stock.management.transaction.receptionnaireMatiere.receptionnaireMatiereId.ReceptionnaireMatiereId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +31,7 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
     @Autowired
     private ReceptionnaireRepository receptionnaireRepository;
 
-    @Autowired
-    private ReceptionnaireMatiereFactory receptionnaireMatiereFactory;
+
 
     @Override
     public ReceptionnaireMatiereDto saveReceptionnaireMatiere(ReceptionnaireMatiereDto receptionnaireMatiereDto) {
@@ -48,8 +45,6 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
         receptionnaireMatiereDto.setMatierePremiere(matierePremiere);
         receptionnaireMatiereDto.setReceptionnaire(receptionnaire);
         receptionnaireMatiereDto.setConfirmed(false);
-        ReceptionnaireMatiereId receptionnaireMatiereId =receptionnaireMatiereFactory.createReceptionnaireMatiereId(receptionnaire.getId(),matierePremiere.getCode());
-        receptionnaireMatiereDto.setReceptionnaireMatiereId(receptionnaireMatiereId);
         ReceptionnaireMatiere savedReceptionnaireMatiere=receptionnaireMatiereRepository.save(receptionnaireMatiereMapper.dtoToModel(receptionnaireMatiereDto));
 
         return receptionnaireMatiereMapper.modelToDto(savedReceptionnaireMatiere);

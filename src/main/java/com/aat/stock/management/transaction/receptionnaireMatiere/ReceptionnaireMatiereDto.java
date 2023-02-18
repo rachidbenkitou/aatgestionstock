@@ -1,16 +1,13 @@
 package com.aat.stock.management.transaction.receptionnaireMatiere;
 
-import com.aat.stock.management.fournisseur.Fournisseur;
 import com.aat.stock.management.matierePremiere.MatierePremiere;
 import com.aat.stock.management.receptionnaire.Receptionnaire;
-import com.aat.stock.management.transaction.receptionnaireMatiere.receptionnaireMatiereId.ReceptionnaireMatiereId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
 public class ReceptionnaireMatiereDto {
-
-    private ReceptionnaireMatiereId receptionnaireMatiereId;
+    private Long idTransactionSortie;
     @JsonIgnore
     MatierePremiere matierePremiere;
     @JsonIgnore
@@ -20,16 +17,16 @@ public class ReceptionnaireMatiereDto {
     private short quantiteLivre;
     private boolean isConfirmed;
     private String unite;
-    private String lieuAffectation;
-    private double puHt;
     private String receptionnairecCne;
     private String articleCode;
     private String articleDesignation;
 
+
     public ReceptionnaireMatiereDto() {
     }
 
-    public ReceptionnaireMatiereDto(MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String lieuAffectation, double puHt, String receptionnaireCne, String articleCode,String articleDesignation) {
+    public ReceptionnaireMatiereDto(Long idTransactionSortie, MatierePremiere matierePremiere, Receptionnaire receptionnaire, Date dateTransaction, Date lastModified, short quantiteLivre, boolean isConfirmed, String unite, String receptionnairecCne, String articleCode, String articleDesignation) {
+        this.idTransactionSortie = idTransactionSortie;
         this.matierePremiere = matierePremiere;
         this.receptionnaire = receptionnaire;
         this.dateTransaction = dateTransaction;
@@ -37,19 +34,25 @@ public class ReceptionnaireMatiereDto {
         this.quantiteLivre = quantiteLivre;
         this.isConfirmed = isConfirmed;
         this.unite = unite;
-        this.lieuAffectation = lieuAffectation;
-        this.puHt = puHt;
         this.receptionnairecCne = receptionnairecCne;
         this.articleCode = articleCode;
-        this.articleDesignation=articleDesignation;
+        this.articleDesignation = articleDesignation;
     }
 
-    public ReceptionnaireMatiereId getReceptionnaireMatiereId() {
-        return receptionnaireMatiereId;
+    public String getArticleDesignation() {
+        return articleDesignation;
     }
 
-    public void setReceptionnaireMatiereId(ReceptionnaireMatiereId receptionnaireMatiereId) {
-        this.receptionnaireMatiereId = receptionnaireMatiereId;
+    public void setArticleDesignation(String articleDesignation) {
+        this.articleDesignation = articleDesignation;
+    }
+
+    public Long getIdTransactionSortie() {
+        return idTransactionSortie;
+    }
+
+    public void setIdTransactionSortie(Long idTransactionSortie) {
+        this.idTransactionSortie = idTransactionSortie;
     }
 
     public MatierePremiere getMatierePremiere() {
@@ -108,22 +111,6 @@ public class ReceptionnaireMatiereDto {
         this.unite = unite;
     }
 
-    public String getLieuAffectation() {
-        return lieuAffectation;
-    }
-
-    public void setLieuAffectation(String lieuAffectation) {
-        this.lieuAffectation = lieuAffectation;
-    }
-
-    public double getPuHt() {
-        return puHt;
-    }
-
-    public void setPuHt(double puHt) {
-        this.puHt = puHt;
-    }
-
     public String getReceptionnaireCne() {
         return receptionnairecCne;
     }
@@ -148,11 +135,4 @@ public class ReceptionnaireMatiereDto {
         this.receptionnairecCne = receptionnairecCne;
     }
 
-    public String getArticleDesignation() {
-        return articleDesignation;
-    }
-
-    public void setArticleDesignation(String articleDesignation) {
-        this.articleDesignation = articleDesignation;
-    }
 }
