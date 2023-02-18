@@ -115,13 +115,13 @@ public class FactureReceptionPDFExport {
             table.addCell(f.getArticleDesignation());
             table.addCell(f.getUnite());
             table.addCell(""+f.getQuantiteLivre());
-            table.addCell("------------------");
+            table.addCell(""+f.getPuHt());
             i++;
         }
         PdfPTable table1 = new PdfPTable(1);
         table1.setWidthPercentage(100f);
         table1.setSpacingBefore(0);
-        table1.addCell("Lieu d'affectation :\n\n\n ----------");
+        table1.addCell("Lieu d'affectation : "+fournisseurMatiereDtos.get(0).getLieuAffectation());
         //le derniere table
         PdfPTable table4 = new PdfPTable(2);
         table4.setWidthPercentage(100f);
