@@ -25,7 +25,6 @@ public class FournisseurMatiereDto  {
     private String articleCode;
     private String articleDesignation;
 
-
     public FournisseurMatiereDto() {
     }
 
