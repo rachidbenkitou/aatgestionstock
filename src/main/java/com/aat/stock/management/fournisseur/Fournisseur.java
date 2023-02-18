@@ -18,12 +18,20 @@ public class Fournisseur extends Intervenant implements Serializable {
     @Column(unique = true)
     private String ice;
     @JsonIgnore
-    @OneToMany(mappedBy = "fournisseur",fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "fournisseur",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<FournisseurMatiere> fournisseurMatieres;
     public String getIce() {
         return ice;
     }
     public void setIce(String ice) {
         this.ice = ice;
+    }
+
+    public List<FournisseurMatiere> getFournisseurMatieres() {
+        return fournisseurMatieres;
+    }
+
+    public void setFournisseurMatieres(List<FournisseurMatiere> fournisseurMatieres) {
+        this.fournisseurMatieres = fournisseurMatieres;
     }
 }

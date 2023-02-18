@@ -1,6 +1,10 @@
 package com.aat.stock.management.matierePremiere;
 
 import com.aat.stock.management.filiere.Filiere;
+import com.aat.stock.management.receptionnaire.Receptionnaire;
+import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiere;
+import com.aat.stock.management.transaction.receptionnaireMatiere.ReceptionnaireMatiere;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +36,13 @@ public class MatierePremiere {
             inverseJoinColumns=@JoinColumn(name="filiere_nom")
     )
     private List<Filiere> filieres;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "matierePremiere",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<FournisseurMatiere> fournisseurMatieres;
+    @JsonIgnore
+    @OneToMany(mappedBy = "matierePremiere",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<ReceptionnaireMatiere> receptionnaireMatieres;
     public String getCode() {
         return code;
     }
@@ -102,5 +113,21 @@ public class MatierePremiere {
 
     public void setFilieres(List<Filiere> filieres) {
         this.filieres = filieres;
+    }
+
+    public List<FournisseurMatiere> getFournisseurMatieres() {
+        return fournisseurMatieres;
+    }
+
+    public void setFournisseurMatieres(List<FournisseurMatiere> fournisseurMatieres) {
+        this.fournisseurMatieres = fournisseurMatieres;
+    }
+
+    public List<ReceptionnaireMatiere> getReceptionnaireMatieres() {
+        return receptionnaireMatieres;
+    }
+
+    public void setReceptionnaireMatieres(List<ReceptionnaireMatiere> receptionnaireMatieres) {
+        this.receptionnaireMatieres = receptionnaireMatieres;
     }
 }
