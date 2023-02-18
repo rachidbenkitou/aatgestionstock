@@ -35,9 +35,9 @@ public class FournisseurMatiereController {
         return  new ResponseEntity<>(fournisseurMatiereService.updateFournisseurMatiere(fournisseurMatiereDto), HttpStatus.OK);
     }
 
-    @PutMapping("/move-stock/{code}/{quatite}")
-    public ResponseEntity<?> updatestock(@PathVariable String code, @PathVariable short quatite){
-        fournisseurMatiereService.isCofirmedFournisseurMatiere(code,quatite);
+    @PutMapping("/move-stock/{code}/{quatite}/{idTransactionEntree}")
+    public ResponseEntity<?> updatestock(@PathVariable String code, @PathVariable short quatite,@PathVariable Long idTransactionEntree){
+        fournisseurMatiereService.isCofirmedFournisseurMatiere(code,quatite,idTransactionEntree);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
 

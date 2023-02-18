@@ -12,6 +12,7 @@ import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatier
 import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiereDto;
 import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiereMapper;
 import com.aat.stock.management.transaction.fournisseurMatiere.FournisseurMatiereRepository;
+import com.aat.stock.management.transaction.receptionnaireMatiere.ReceptionnaireMatiere;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,7 +67,10 @@ public class FournisseurMatiereServiceImpl implements FournisseurMatiereService{
         return fournisseurMatiereMapper.modelToDto(updatedFournisseurMatiere);
     }
     @Override
-    public void isCofirmedFournisseurMatiere(String code, short quantite) {
+    public void isCofirmedFournisseurMatiere(String code, short quantite, Long idTransactionEntree) {
+        FournisseurMatiere fournisseurMatiere= fournisseurMatiereRepository.findByIdTransactionEntree(idTransactionEntree);
+        fournisseurMatiere.setConfirmed(true);
+
         MatierePremiereDto matierePremiereDto= matierePremiereServiceInterface.OneMatierePremierefindByCode(code);
         matierePremiereDto.setStockActuel((short) (matierePremiereDto.getStockActuel()+quantite));
         matierePremiereServiceInterface.MatierePremiereupdate(matierePremiereDto);

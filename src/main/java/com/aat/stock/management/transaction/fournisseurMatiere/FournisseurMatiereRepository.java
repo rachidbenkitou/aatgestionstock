@@ -13,4 +13,6 @@ public interface FournisseurMatiereRepository extends JpaRepository<FournisseurM
     //List<FournisseurMatiere> findAllByFournisseurIce(String ice);
     @Query("select fm from FournisseurMatiere fm where fm.fournisseur.ice like :kw")
     public List<FournisseurMatiere> findAllByFournisseurIce(@Param("kw") String ice);
+
+    FournisseurMatiere findByIdTransactionEntree(Long id);
 }
