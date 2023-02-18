@@ -35,9 +35,6 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
 
     @Override
     public ReceptionnaireMatiereDto saveReceptionnaireMatiere(ReceptionnaireMatiereDto receptionnaireMatiereDto) {
-        short quatiteReste=matierePremiereRepository.findBycodeMatierePremiere(receptionnaireMatiereDto.getArticleCode()).getStockActuel();
-        if(quatiteReste-receptionnaireMatiereDto.getQuantiteLivre()<0)
-            throw new ReceptonnaireMatiereQuantityInsufisant("La quatité ets insuffisante, il reste que "+quatiteReste);
         MatierePremiere matierePremiere=matierePremiereRepository.findBycodeMatierePremiere(receptionnaireMatiereDto.getArticleCode());
         if (matierePremiere==null) throw new MatierePremiereNotFoundException("La matière premiére n'existe pas.");
         Receptionnaire receptionnaire =receptionnaireRepository.findByCne(receptionnaireMatiereDto.getReceptionnaireCne());
@@ -59,6 +56,9 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
 
     @Override
     public void isCofirmedReceptionnaireMatiere(String code, short quantite) {
+        short quatiteReste=matierePremiereRepository.findBycodeMatierePremiere(code).getStockActuel();
+        if(quatiteReste-quantite<0)
+            throw new ReceptonnaireMatiereQuantityInsufisant("La quatité est insuffisante, il reste que "+quatiteReste);
         MatierePremiereDto matierePremiereDto= matierePremiereServiceInterface.OneMatierePremierefindByCode(code);
         matierePremiereDto.setStockActuel((short) (matierePremiereDto.getStockActuel()-quantite));
         matierePremiereServiceInterface.MatierePremiereupdate(matierePremiereDto);
