@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereService {
     @Autowired
@@ -55,10 +57,12 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
     }
 
     @Override
-    public void isCofirmedReceptionnaireMatiere(String code, short quantite) {
+    public void isCofirmedReceptionnaireMatiere(String code, short quantite, Long idTransactionSortie) {
         short quatiteReste=matierePremiereRepository.findBycodeMatierePremiere(code).getStockActuel();
         if(quatiteReste-quantite<0)
             throw new ReceptonnaireMatiereQuantityInsufisant("La quatité est insuffisante, il reste que "+quatiteReste);
+        ReceptionnaireMatiere receptionnaireMatiere= receptionnaireMatiereRepository.findByIdTransactionSortie(idTransactionSortie);
+        receptionnaireMatiere.setConfirmed(true);
         MatierePremiereDto matierePremiereDto= matierePremiereServiceInterface.OneMatierePremierefindByCode(code);
         matierePremiereDto.setStockActuel((short) (matierePremiereDto.getStockActuel()-quantite));
         matierePremiereServiceInterface.MatierePremiereupdate(matierePremiereDto);

@@ -31,9 +31,9 @@ public class ReceptionnaireMatiereController {
         receptionnaireMatiereDto.setIdTransactionSortie(id);
         return  new ResponseEntity<>(receptionnaireMatiereService.updateReceptionnaireMatiere(receptionnaireMatiereDto), HttpStatus.OK);
     }
-    @PutMapping("/move-stock/{code}/{quatite}")
-    public ResponseEntity<?> updatestock(@PathVariable String code, @PathVariable short quatite){
-        receptionnaireMatiereService.isCofirmedReceptionnaireMatiere(code,quatite);
+    @PutMapping("/move-stock/{code}/{quatite}/{idTransactionSortie}")
+    public ResponseEntity<?> updatestock(@PathVariable String code, @PathVariable short quatite, @PathVariable Long idTransactionSortie){
+        receptionnaireMatiereService.isCofirmedReceptionnaireMatiere(code,quatite,idTransactionSortie);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")

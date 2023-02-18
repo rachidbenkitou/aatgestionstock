@@ -16,4 +16,5 @@ public interface ReceptionnaireMatiereRepository extends JpaRepository<Reception
     //List<ReceptionnaireMatiere> findAllByReceptionnaireCne(String cne);
     @Query("select rm from ReceptionnaireMatiere rm where rm.receptionnaire.cne like :kw")
     public List<ReceptionnaireMatiere> findAllByReceptionnaireCne(@Param("kw") String cne);
+    public ReceptionnaireMatiere findByIdTransactionSortie(Long idTransactionSortie);
 }

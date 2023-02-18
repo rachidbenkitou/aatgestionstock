@@ -7,7 +7,7 @@ import java.util.List;
 public interface ReceptionnaireMatiereService {
     ReceptionnaireMatiereDto saveReceptionnaireMatiere(ReceptionnaireMatiereDto receptionnaireMatiereDto);
     ReceptionnaireMatiereDto updateReceptionnaireMatiere(ReceptionnaireMatiereDto receptionnaireMatiereDto);
-    void isCofirmedReceptionnaireMatiere(String  designation, short quantite);
+    void isCofirmedReceptionnaireMatiere(String  designation, short quantite, Long idTransactionSortie);
     List<ReceptionnaireMatiereDto> listReceptionnaireMatiere();
     List<ReceptionnaireMatiereDto> listReceptionnaireMatiereeByCne(String cne);
     void deleteReceptionnaireMatiere(Long id);
