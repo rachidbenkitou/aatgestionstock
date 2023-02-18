@@ -16,4 +16,5 @@ public interface MatierePremiereRepository extends JpaRepository<MatierePremiere
     MatierePremiere findMatierePremiereByDesignation(String designation);
     @Query("select m from MatierePremiere m where m.code=?1")
     MatierePremiere findBycodeMatierePremiere(String code);
+
 }

@@ -1,6 +1,7 @@
 package com.aat.stock.management.filiere;
 
 import com.aat.stock.management.filiere.service.FiliereServiceIntr;
+import com.aat.stock.management.matierePremiere.MatierePremiereDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,11 @@ public class FiliereController {
     @GetMapping("/all")
     public List<FiliereDto> listFilieres(){
         return  filiereService.findAllFiliers();
+    }
+
+    @GetMapping("/find/matieres-premieres-filiere/{nom}")
+    public List<MatierePremiereDto> findMatierePremieresByFiliereName(@PathVariable(name="nom") String nom){
+        return  filiereService.findMatierePremieresByFiliereName(nom);
     }
     @GetMapping("/find/{nom}")
     public List<FiliereDto> getFiliere(@PathVariable(name="nom") String nom){
