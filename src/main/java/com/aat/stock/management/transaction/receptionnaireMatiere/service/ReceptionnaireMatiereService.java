@@ -10,5 +10,5 @@ public interface ReceptionnaireMatiereService {
     void isCofirmedReceptionnaireMatiere(String  designation, short quantite);
     List<ReceptionnaireMatiereDto> listReceptionnaireMatiere();
     List<ReceptionnaireMatiereDto> listReceptionnaireMatiereeByCne(String cne);
-    void deleteReceptionnaireMatiere(String cne);
+    void deleteReceptionnaireMatiere(Long id);
 }

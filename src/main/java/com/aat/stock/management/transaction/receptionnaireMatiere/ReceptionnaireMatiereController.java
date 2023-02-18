@@ -36,9 +36,9 @@ public class ReceptionnaireMatiereController {
         receptionnaireMatiereService.isCofirmedReceptionnaireMatiere(designation,quatite);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
-    @DeleteMapping("/delete/{cne}")
-    public ResponseEntity<?> deleteReceptionnaireMatiere(@PathVariable String cne){
-        receptionnaireMatiereService.deleteReceptionnaireMatiere(cne);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteReceptionnaireMatiere(@PathVariable Long id){
+        receptionnaireMatiereService.deleteReceptionnaireMatiere(id);
         return new  ResponseEntity<>(HttpStatus.OK);
     }
 }

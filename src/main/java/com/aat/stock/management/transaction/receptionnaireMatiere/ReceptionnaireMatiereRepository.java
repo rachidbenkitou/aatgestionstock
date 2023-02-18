@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface ReceptionnaireMatiereRepository extends JpaRepository<ReceptionnaireMatiere, Long> {
-    @Transactional
-    void deleteAllByReceptionnaireCne(String cne);
+    //@Transactional
+    //void deleteAllByReceptionnaireCne(String cne);
     //List<ReceptionnaireMatiere> findAllByReceptionnaireCne(String cne);
     @Query("select rm from ReceptionnaireMatiere rm where rm.receptionnaire.cne like :kw")
     public List<ReceptionnaireMatiere> findAllByReceptionnaireCne(@Param("kw") String cne);

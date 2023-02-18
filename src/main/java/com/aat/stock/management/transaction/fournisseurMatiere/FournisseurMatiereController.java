@@ -41,9 +41,9 @@ public class FournisseurMatiereController {
         return  new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{ice}")
-    public ResponseEntity<?> deleteFournisseurMatiere(@PathVariable String ice){
-        fournisseurMatiereService.deleteFournisseurMatiere(ice);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteFournisseurMatiere(@PathVariable Long id){
+        fournisseurMatiereService.deleteFournisseurMatiere(id);
         return new  ResponseEntity<>(HttpStatus.OK);
     }
 }

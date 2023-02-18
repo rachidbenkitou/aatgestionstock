@@ -10,5 +10,5 @@ public interface FournisseurMatiereService {
     void isCofirmedFournisseurMatiere(String  designation, short quantite);
     List<FournisseurMatiereDto> listFournisseurMatiere();
     List<FournisseurMatiereDto> listFournisseurMatiereByIce(String ice);
-    void deleteFournisseurMatiere(String ice);
+    void deleteFournisseurMatiere(Long id);
 }

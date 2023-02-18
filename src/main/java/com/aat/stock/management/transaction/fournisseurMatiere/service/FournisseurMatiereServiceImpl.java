@@ -41,8 +41,8 @@ public class FournisseurMatiereServiceImpl implements FournisseurMatiereService{
     }
 
     @Override
-    public void deleteFournisseurMatiere(String ice) {
-        fournisseurMatiereRepository.deleteAllByFournisseurIce(ice);
+    public void deleteFournisseurMatiere(Long id) {
+        fournisseurMatiereRepository.deleteById(id);
     }
 
     @Override

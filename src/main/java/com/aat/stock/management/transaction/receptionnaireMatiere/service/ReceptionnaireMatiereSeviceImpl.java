@@ -78,7 +78,7 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
     }
 
     @Override
-    public void deleteReceptionnaireMatiere(String cne) {
-        receptionnaireMatiereRepository.deleteAllByReceptionnaireCne(cne);
+    public void deleteReceptionnaireMatiere(Long id) {
+        receptionnaireMatiereRepository.deleteById(id);
     }
 }
