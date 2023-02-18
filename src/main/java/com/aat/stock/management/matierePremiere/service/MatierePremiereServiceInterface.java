@@ -9,7 +9,7 @@ public interface MatierePremiereServiceInterface {
     List<MatierePremiereDto> MatierePremierefindAll();
 
     List<MatierePremiereDto>  MatierePremierefindByCode(String code);
-
+    MatierePremiereDto OneMatierePremierefindByCode(String code);
     MatierePremiereDto MatierePremierefindByDesignation(String designation);
     List<MatierePremiereDto> MatierePremierefindByDesign(String designation);
     MatierePremiereDto MatierePremieresave(MatierePremiereDto matierePremiereDto);

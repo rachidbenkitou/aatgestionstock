@@ -59,7 +59,7 @@ public class ReceptionnaireMatiereSeviceImpl implements ReceptionnaireMatiereSer
 
     @Override
     public void isCofirmedReceptionnaireMatiere(String code, short quantite) {
-        MatierePremiereDto matierePremiereDto= (MatierePremiereDto) matierePremiereServiceInterface.MatierePremierefindByCode(code);
+        MatierePremiereDto matierePremiereDto= matierePremiereServiceInterface.OneMatierePremierefindByCode(code);
         matierePremiereDto.setStockActuel((short) (matierePremiereDto.getStockActuel()-quantite));
         matierePremiereServiceInterface.MatierePremiereupdate(matierePremiereDto);
 

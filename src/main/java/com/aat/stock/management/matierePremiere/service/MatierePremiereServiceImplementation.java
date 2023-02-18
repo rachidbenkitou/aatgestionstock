@@ -43,6 +43,14 @@ public class MatierePremiereServiceImplementation implements MatierePremiereServ
     }
 
     @Override
+    public MatierePremiereDto OneMatierePremierefindByCode(String code) {
+        isCodeMatierePremiereExists(code);
+        Optional<MatierePremiere> matierePremiere = Optional.ofNullable(matierePremiereRepository.findBycodeMatierePremiere(code));
+        return matierePremiere.map(matierePremiereMapper::modelToDto)
+                .orElseThrow(() -> new MatierePremiereNotFoundException("Cette matière n'existe pas."));
+    }
+
+    @Override
     public List<MatierePremiereDto> MatierePremierefindByDesign(String designation) {
         isCodeMatierePremiereExists(designation);
         Optional<List<MatierePremiere>> matierePremieres = Optional.ofNullable(matierePremiereRepository.findMatierePremiereByDesign(designation));
