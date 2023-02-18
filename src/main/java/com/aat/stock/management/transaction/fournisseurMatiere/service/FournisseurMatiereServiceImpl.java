@@ -66,8 +66,8 @@ public class FournisseurMatiereServiceImpl implements FournisseurMatiereService{
         return fournisseurMatiereMapper.modelToDto(updatedFournisseurMatiere);
     }
     @Override
-    public void isCofirmedFournisseurMatiere(String designation, short quantite) {
-        MatierePremiereDto matierePremiereDto=matierePremiereServiceInterface.MatierePremierefindByDesignation(designation);
+    public void isCofirmedFournisseurMatiere(String code, short quantite) {
+        MatierePremiereDto matierePremiereDto= (MatierePremiereDto) matierePremiereServiceInterface.MatierePremierefindByCode(code);
         matierePremiereDto.setStockActuel((short) (matierePremiereDto.getStockActuel()+quantite));
         matierePremiereServiceInterface.MatierePremiereupdate(matierePremiereDto);
     }
